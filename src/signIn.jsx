@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -12,52 +11,69 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Copyright from './Components/Copyright';
 import { loginUser } from './api/Login';
-
-
+import { useTheme } from '@emotion/react';
+import { Link } from 'react-router-dom';
+import GoogleIcon from '@mui/icons-material/Google';
+import GoogleImage from './assets/google.png'
+import { useNavigate } from "react-router-dom";
 
 
 export default function SignInSide() {
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    //login user here with the form values
-    loginUser(data.get('UserName'),data.get('password'))
-  };
+    const navigate = useNavigate()
+
+    const theme = useTheme()
+    
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        //login user here with the form values
+        const result = await loginUser(data.get('UserName'),data.get('password'))
+        if(result){
+                navigate('/Home')
+        }
+    };
 
   return (
-    <Box>
-        <Typography  variant="h3" sx = {{color : 'white' , padding:'1%'}}>
-                Welcome To Pak Dem
+    <Box 
+        sx={{
+            backgroundImage: 'url(/Bg.jpg)',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize:'cover',
+            minHeight: '100vh',
+        }}
+    >
+        <Typography  variant="h4" sx = {{
+                color : 'black' ,
+                 padding:'1.5%' ,
+                 fontFamily:'sans-serif',
+                 fontWeight : 'Bold'
+                 }}>
+                Welcome to PAK DEM (SMC) Pvt. Ltd
         </Typography>
-        <Grid container component="main" >
-            <Grid
-                item
-                xs={false}
-                sm={4}
-                md={7}
-                lg={6}
-                sx={{
-                    backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundColor: (t) =>
-                    t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            />
-            <Grid   item xs={12} sm={8} md={5} lg={6} 
-                    component={Paper} elevation={6} square>
+        <Grid container component="main" 
+            sx={{ flexGrow: 1, 
+            }}>
+            <Grid   item xs={10} sm={8} md={5} lg={4} 
+                    component={Paper}  square
+                    sx = {{
+                        marginLeft : 'auto',
+                        marginRight : 'auto',
+                        borderRadius : 5,
+                        marginTop:1,
+                        boxShadow:15,
+                    }}
+                    >
             <Box
                 sx={{
-                my: 8,
+                my: 5,
                 mx: 4,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 }}
             >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                <Avatar sx={{ bgcolor: theme.palette.primary.main }}>
                 <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
@@ -84,24 +100,32 @@ export default function SignInSide() {
                     id="password"
                     autoComplete="current-password"
                 />
-                <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Remember me"
-                />
                 <Button
-                    type="submit"
-                    fullWidth
+                    type="submit"          
                     variant="contained"
-                    color='secondary'
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ 
+                        mt: 2, mb: 2  , 
+                        color : 'white' ,
+                        backgroundColor: theme.palette.primary.main ,
+                        padding: '2% 10%',
+                        fontSize:'15px'
+                    }}
                 >
                     Sign In
                 </Button>
-                <Copyright sx={{ mt: 5 }} />
+                <Box sx ={{ mb:2}}>
+                    <Typography variant='p'>
+                        -OR- 
+                    </Typography>
+                </Box>
+                <Button variant="outlined" color='primary' >
+                     <img src={GoogleImage} height={25} style={{ marginRight: 15 }} />
+                     Sign in with Google
+                </Button>
             </Box>
           </Box>
+            </Grid>
         </Grid>
-      </Grid>
       </Box>
 
   );
