@@ -4,6 +4,8 @@ import Home from '../Pages/Home'
 import { Routes, Route } from "react-router-dom";
 import Navbar from '../Components/AppBar';
 import { Box } from '@mui/material';
+import Footer from '../Components/Footer';
+import DataTable from '../Components/Table';
 
 function Body() {
     const theme = useTheme();
@@ -16,8 +18,10 @@ function Body() {
         <Routes>
             <Route path='/'>
                 <Route path="Home" element={ <Home /> } />
+                <Route path='Table' element={ <DataTable />} />
             </Route>
         </Routes>
+      <Footer />
     </>
   )
 }

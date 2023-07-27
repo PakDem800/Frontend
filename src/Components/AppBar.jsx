@@ -40,6 +40,7 @@ export default function DrawerAppBar() {
 
   const [allotmentMenuAnchorEl, setAllotmentMenuAnchorEl] = useState(null);
   const [receiptsMenuAnchorEl, setReceiptsMenuAnchorEl] = useState(null);
+  const [otherAnchorEl, setOtherAnchorEl] = useState(null);
 
   const navigate = useNavigate();
 
@@ -55,6 +56,8 @@ export default function DrawerAppBar() {
   const handleAllotmentMenuClose = () => setAllotmentMenuAnchorEl(null);
   const handleReceiptsMenuOpen = (event) => setReceiptsMenuAnchorEl(event.currentTarget);
   const handleReceiptsMenuClose = () => setReceiptsMenuAnchorEl(null);
+  const handleOthersMenuOpen = (event) => setOtherAnchorEl(event.currentTarget);
+  const handleOthersMenuClose = () => setOtherAnchorEl(null);
 
   const [createMainAppMenuOpen, setCreateMainAppMenuOpen] = useState(false);
 
@@ -163,6 +166,7 @@ export default function DrawerAppBar() {
                 anchorEl={allotmentMenuAnchorEl}
                 open={Boolean(allotmentMenuAnchorEl)}
                 onClose={handleAllotmentMenuClose}
+                MenuListProps={{onMouseLeave: handleAllotmentMenuClose}}
               >
                 <MenuItem onClick={handleAllotmentMenuClose}>
                   <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
@@ -191,11 +195,12 @@ export default function DrawerAppBar() {
                       } }}>
                 Receipts
               </Button>
-              {/* Button with dropdown for Receipts */}
+              {/* Button with dropdown for Others */}
               <Menu
                 anchorEl={receiptsMenuAnchorEl}
                 open={Boolean(receiptsMenuAnchorEl)}
                 onClose={handleReceiptsMenuClose}
+                MenuListProps={{onMouseLeave: handleReceiptsMenuClose}}
               >
                 <MenuItem onClick={handleReceiptsMenuClose}>
                   <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
@@ -216,6 +221,55 @@ export default function DrawerAppBar() {
               <Button onClick={() => { navigate('/Home'); }} sx={{ color: theme.palette.secondary.text, fontWeight: 'bold', marginRight: 4, ':hover': { borderBottom: '4px solid #ffffff' } }}>
                 Ledger
               </Button>
+              <Button onClick={handleOthersMenuOpen} 
+                  sx={{ color: theme.palette.secondary.text, fontWeight: 'bold',
+                     marginRight: 4, ':hover': { borderBottom: '4px solid #ffffff'
+                      } }}>
+                Misc.
+              </Button>
+              <Menu
+                anchorEl={otherAnchorEl}
+                open={Boolean(otherAnchorEl)}
+                onClose={handleOthersMenuClose}
+                MenuListProps={{onMouseLeave: handleOthersMenuClose}}
+
+              >
+                <MenuItem onClick={handleOthersMenuClose}>
+                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  Agent Payment Voucher
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleOthersMenuClose}>
+                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  Agent Payment list
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleOthersMenuClose}>
+                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  Application Form Record Finder
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleOthersMenuClose}>
+                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  Receipt Record Finder
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleOthersMenuClose}>
+                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  Agent Wise File Update
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleOthersMenuClose}>
+                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  All Payments
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleOthersMenuClose}>
+                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  Short Fall of Installemnt
+                  </Link>
+                </MenuItem>
+              </Menu>
               <Button
                 sx={{
                   color: theme.palette.secondary.text,

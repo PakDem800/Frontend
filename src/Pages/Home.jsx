@@ -5,37 +5,70 @@ import { Button, Divider, Typography } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import { FormRow1 , FormRow2 } from '../Components/FormRow';
+import { CoPresentOutlined } from '@mui/icons-material';
 
 
 
 export default  function Home() {
 
     const [user,setUser] = useState('');
+    const [noUser,setNoUser] = useState(null)
     const navigate = useNavigate()
     const theme = useTheme();
+    const [notStaff,setNotStaff] = useState(null)
 
-    useEffect(()=> {
-        const userType = localStorage.getItem('type')
-        if(userType == 1) {
+    useEffect( () => {
+        const userType =  localStorage.getItem('type')
+
+        if(userType == null) {
+            setNoUser(true)
+        }
+
+        else if(userType == 1) {
             setUser("Admin")
+            setNotStaff(true)
+            setNoUser(false)
         }
         else if(userType == 2){
             setUser("Staff")
+            setNotStaff(false)
+            setNoUser(false)
         }
         else if(userType == 3){
             setUser("Cashier")
+            setNotStaff(true)
+            setNoUser(false)
         }
         else if(userType == 4){
             setUser("Finance Manager")
+            setNotStaff(true)
+            setNoUser(false)
         }
     })
+
+    const ButtonStyling = {
+        color: theme.palette.secondary.text,
+        backgroundColor: theme.palette.secondary.main,
+        fontWeight: 'bold',
+        width: '30%',
+        alignSelf: 'center',
+        boxShadow: 10,
+        my: 1,
+        ':hover': {
+          backgroundColor: theme.palette.secondary.hoverButton,
+          color: theme.palette.secondary.main,
+        },
+        border: 1,
+        borderRadius: 3,
+        borderColor: theme.palette.secondary.Button,
+      };
 
 
   return (
     <>
     <Box sx={{
         display: 'flex',
-        backgroundColor:theme.palette.secondary.background,
+        backgroundColor:noUser ? "white" : theme.palette.secondary.background,
         justifyContent:'center',
         flexDirection:'column',
         paddingTop:{lg:'1%' , md:'2%' , sm:'3%' , xs:'2%'}
@@ -45,7 +78,7 @@ export default  function Home() {
             <Box sx={{ 
                 display: 'inline-block', textAlign: 'center', 
                 marginTop: 2, padding: '2%' ,
-                marginBottom : 1
+                marginBottom : 1,
                 }}>
                     <Typography variant='h4' sx={{ fontSize: '2rem' }}>
                     {user} Portal
@@ -55,16 +88,37 @@ export default  function Home() {
                     />
             </Box>
        </Box>
-       <Box sx={{ flexGrow: 1 , margin:'0% 3%' }}>
+       {noUser ? 
+        (<Box>
+            <Box sx={{ display: 'inline-block', textAlign: 'center', marginTop: 2, padding: '2%', marginBottom : 1, }}>
+                <Typography variant='h4' sx={{ fontSize: '2rem' }}>
+                    Login To access Portal
+                </Typography>
+            </Box>
+            <Box sx={{  textAlign: 'center', marginTop: 2, padding: '2%', marginBottom : 1, }}>
+                <Button
+                    onClick={() => {navigate('/')}}
+                    sx={ButtonStyling}
+                >
+                    login
+                </Button>
+            </Box>
+       </Box>) 
+       : 
+       (<Box sx={{ flexGrow: 1 , margin:'0% 3%',
+        paddingBottom : !notStaff ? '5%' : 'auto'
+        //If footer nahi dalte to
+            } }>
             <Grid container  >
                 <Grid container item spacing={3} sx ={{marginBottom:'2%'}}>
                     <FormRow1 />
+                    {notStaff && (
+                        <FormRow2 />
+                    )} 
                 </Grid>
-                <Grid container item spacing={5}>
-                    <FormRow2 />
-                </Grid>   
+                  
             </Grid>
-        </Box>
+        </Box>)}
 
     </Box>
     </>
