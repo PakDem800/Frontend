@@ -4,11 +4,17 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 import Copyright from '../Components/Copyright';
 import { Button, Divider, Typography } from '@mui/material';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import CreateIcon from '@mui/icons-material/Create';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import HomeIcon from '@mui/icons-material/Home';
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import GroupsIcon from '@mui/icons-material/Groups';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 
 
 
@@ -17,31 +23,61 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export function FormRow1() {
 
-    const [user,setUser] = useState('');
+  const[isAdmin,setIsAdmin] = useState(null)
+
+  const theme = useTheme();
+
+    
     const navigate = useNavigate()
-  
-    const theme = useTheme();
+
+    const ButtonStyling = {
+      color: theme.palette.secondary.text,
+      backgroundColor: theme.palette.secondary.main,
+      fontWeight: 'bold',
+      width: { lg: '70%', md: '85%', sm: '85%', xs: '90%' },
+      alignSelf: 'center',
+      boxShadow: 10,
+      my: 1,
+      ':hover': {
+        backgroundColor: theme.palette.secondary.hoverButton,
+        color: theme.palette.secondary.main,
+      },
+      border: 1,
+      borderRadius: 3,
+      paddingLeft: 1,
+      paddingRight: 1,
+      paddingTop: 1,
+      paddingBottom: 1,
+      borderColor: theme.palette.secondary.Button,
+    };
 
     useEffect(()=> {
-        const userType = localStorage.getItem('type')
-        if(userType == 1) {
-            setUser("Admin")
-        }
-        else if(userType == 2){
-            setUser("Staff")
-        }
-        else if(userType == 3){
-            setUser("Cashier")
-        }
-        else if(userType == 4){
-            setUser("Finance Manager")
-        }
-    })
+
+      const userType = localStorage.getItem('type')
+
+      if(userType == 1) {
+          setIsAdmin(true)
+      }
+      else if(userType == 2){
+          setIsAdmin(true)
+          //for the sake of property used of lg = { 4 }
+      }
+      else if(userType == 3){
+          setIsAdmin(false)
+      }
+      else if(userType == 4){
+          setIsAdmin(true)
+      }
+
+  })
+  
+  
 
 
 
     const Item = styled(Paper)(({ theme }) => ({
-        padding: theme.spacing(1),
+
+        padding: { lg : theme.spacing(1)},
         textAlign: 'center',
         color: theme.palette.secondary.main,
         display:'flex',
@@ -49,13 +85,18 @@ export function FormRow1() {
         border:'1px solid white' , borderRadius:20,
         boxShadow:10,
         paddingBottom:'5%'
+
       }));
 
 
     return (
       <>
-        <Grid item md={4} sm={6} xs={12} >
-          <Item>
+        <Grid item lg={isAdmin ? 4 : 3} md={isAdmin ? 4 : 6} sm={6} xs={12} >
+          <Item sx = {{ height:{ lg : isAdmin ? '93%' : '97%'  }}}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',marginTop:2 }}>
+                <HomeIcon fontSize="large"  sx ={{ width: '36vw',height: '8vh',color: theme.palette.secondary.main}}/>
+
+            </Box>
             <Typography variant='h5'
                 sx = {{
                     color: theme.palette.text.primary,
@@ -66,26 +107,7 @@ export function FormRow1() {
                 Main Form Applications
             </Typography>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'60%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 View Main Forms
                 <VisibilityIcon
@@ -107,26 +129,7 @@ export function FormRow1() {
             
 
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'60%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 
                 Create General
@@ -134,26 +137,7 @@ export function FormRow1() {
                 
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'60%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 2,
-                    paddingRight: 2,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 Create Deal
                 <CreateIcon  sx={{marginLeft:1}}  />
@@ -161,103 +145,61 @@ export function FormRow1() {
 
           </Item>
         </Grid>
-        <Grid item md={4} sm={6} xs={12}>
-        <Item>
+        <Grid item lg={isAdmin ? 4 : 3} md={isAdmin ? 4 : 6} sm={6} xs={12}>
+        <Item  sx = {{ height:{ lg : isAdmin ? 'auto' : '97%'  }}}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' ,marginTop:2}}>
+                    <CurrencyExchangeIcon fontSize="large"  sx ={{ width: '36vw',height: '8vh',}}/>
+            </Box>
             <Typography variant='h5'
                 sx = {{
                     color: theme.palette.text.primary,
-                    padding:'3%'
+                    padding:'3%',
                 
                 }}
                 >
-                Expenditure
+                Payments
             </Typography>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
-                Expenditures
+                Cash Payments
                 <VisibilityIcon
                     sx ={{ marginLeft:1}}
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
-                Month Wise Report
+                CA Payments
                 <VisibilityIcon
                     sx ={{ marginLeft:1}}
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
-                Add Expenditure
-                <CreateIcon
+                Online Payments
+                <VisibilityIcon
+                    sx ={{ marginLeft:1}}
+                />
+            </Button>
+            <Button
+                sx={ButtonStyling}
+            >
+                Payment schedules
+                <VisibilityIcon
                     sx ={{ marginLeft:1}}
                 />
             </Button>
 
-          </Item>
+        </Item>
         </Grid>
-        <Grid item md={4} sm={6} xs={12}>
-        <Item>
+        <Grid item lg={isAdmin ? 4 : 3} md={isAdmin ? 4 : 6} sm={6} xs={12}>
+        <Item  sx = {{ height:{ lg : isAdmin ? 'auto' : '97%'  }}} >
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',marginTop:2 }}>
+                    <ReceiptIcon fontSize="large"  sx ={{ width: '36vw',height: '8vh',}}/>
+ 
+            </Box> 
             <Typography variant='h5'
                 sx = {{
                     color: theme.palette.text.primary,
@@ -268,26 +210,7 @@ export function FormRow1() {
                 Receipts
             </Typography>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 Regular Receipts
                 <VisibilityIcon
@@ -295,26 +218,7 @@ export function FormRow1() {
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 Transfer Receipts
                 <VisibilityIcon
@@ -322,26 +226,7 @@ export function FormRow1() {
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 Development Receipts
                 <VisibilityIcon
@@ -349,26 +234,7 @@ export function FormRow1() {
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 
                 Create Receipt
@@ -385,32 +251,52 @@ export function FormRow1() {
 
   export function FormRow2() {
 
-    const [user,setUser] = useState('');
-    const navigate = useNavigate()
-  
+    const[isAdmin,setIsAdmin] = useState(null)
     const theme = useTheme();
 
- 
+    const navigate = useNavigate()
 
-    
-
+    const ButtonStyling = {
+      color: theme.palette.secondary.text,
+      backgroundColor: theme.palette.secondary.main,
+      fontWeight: 'bold',
+      width: { lg: '70%', md: '85%', sm: '85%', xs: '90%' },
+      alignSelf: 'center',
+      boxShadow: 10,
+      my: 1,
+      ':hover': {
+        backgroundColor: theme.palette.secondary.hoverButton,
+        color: theme.palette.secondary.main,
+      },
+      border: 1,
+      borderRadius: 3,
+      paddingLeft: 1,
+      paddingRight: 1,
+      paddingTop: 1,
+      paddingBottom: 1,
+      borderColor: theme.palette.secondary.Button,
+    };
+  
+   
 
     useEffect(()=> {
+
         const userType = localStorage.getItem('type')
+
         if(userType == 1) {
-            setUser("Admin")
+            setIsAdmin(true)
         }
         else if(userType == 2){
-            setUser("Staff")
+            setIsAdmin(false)
         }
         else if(userType == 3){
-            setUser("Cashier")
+            setIsAdmin(false)
         }
         else if(userType == 4){
-            setUser("Finance Manager")
+            setIsAdmin(true)
         }
-    })
 
+    })
 
 
     const Item = styled(Paper)(({ theme }) => ({
@@ -427,8 +313,11 @@ export function FormRow1() {
 
     return (
       <>
-        <Grid item sm={4} xs={6} >
-          <Item>
+        <Grid item lg={isAdmin ? 4 : 3} md={isAdmin ? 4 : 6} sm={6} xs={12}>
+        <Item>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',marginTop:isAdmin ? 2 : 0 }}>
+               <LocalAtmIcon  fontSize="large"  sx ={{ width: '36vw',height: '8vh',}}/>
+            </Box> 
             <Typography variant='h5'
                 sx = {{
                     color: theme.palette.text.primary,
@@ -436,106 +325,49 @@ export function FormRow1() {
                 
                 }}
                 >
-                Main Form Applications
+                Expenditure
             </Typography>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'60%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
-                View Main Forms
+                Expenditures
                 <VisibilityIcon
                     sx ={{ marginLeft:1}}
                 />
             </Button>
-            <Typography variant='p'
-                sx = {{
-                    color: theme.palette.text.primary,
-                    padding:'3%',
-                    alignSelf:'flex-start',
-                    marginLeft:'6%'
-                
-                }}
-                >
-                Create Main File:
-                
-            </Typography>
-            
-
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'60%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
-                
-                Create General
-                <CreateIcon  sx={{marginLeft:1}}  />
-                
+                Month Wise Report
+                <VisibilityIcon
+                    sx ={{ marginLeft:1}}
+                />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'60%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 2,
-                    paddingRight: 2,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
-                Create Deal
-                <CreateIcon  sx={{marginLeft:1}}  />
+                Daily Recovery Report
+                <VisibilityIcon
+                    sx ={{ marginLeft:1}}
+                />
+            </Button>
+            <Button
+                sx={ButtonStyling}
+            >
+                Add Expenditure
+                <CreateIcon
+                    sx ={{ marginLeft:1}}
+                />
             </Button>
 
-          </Item>
+        </Item>
         </Grid>
-        <Grid item sm={4} xs={6}>
+        {isAdmin && (<Grid item md={4} sm={6} xs={12}>
         <Item>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',marginTop:2 }}>
+                    <MapsHomeWorkIcon ptIcon fontSize="large"  sx ={{ width: '36vw',height: '8vh',}}/>
+
+            </Box>
             <Typography variant='h5'
                 sx = {{
                     color: theme.palette.text.primary,
@@ -546,26 +378,7 @@ export function FormRow1() {
                 Plots
             </Typography>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 All Plots
                 <VisibilityIcon
@@ -573,26 +386,7 @@ export function FormRow1() {
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 Plots Price
                 <VisibilityIcon
@@ -600,26 +394,7 @@ export function FormRow1() {
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 Plot Allotment
                 <VisibilityIcon
@@ -627,39 +402,34 @@ export function FormRow1() {
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 
                 Plot Cancellation
-                <VisibilityIcon
+                <CreateIcon
+                    sx ={{ marginLeft:1}}
+                />
+                
+            </Button>
+            <Button
+                sx={ButtonStyling}
+            >
+                
+                Plot Transfer
+                <CreateIcon
                     sx ={{ marginLeft:1}}
                 />
                 
             </Button>
 
           </Item>
-        </Grid>
-        <Grid item sm={4} xs={6}>
+        </Grid>)}
+        {isAdmin && (<Grid item md={4} sm={6} xs={12}>
+            
         <Item>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' ,marginTop:2}}>
+                    <GroupsIcon  fontSize="large"  sx ={{ width: '36vw',height: '8vh',}}/>
+            </Box>
             <Typography variant='h5'
                 sx = {{
                     color: theme.palette.text.primary,
@@ -667,119 +437,43 @@ export function FormRow1() {
                 
                 }}
                 >
-                Receipts
+                Agent
             </Typography>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
-                Regular Receipts
+                All Agents
                 <VisibilityIcon
                     sx ={{ marginLeft:1}}
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
-                Transfer Receipts
+                Agent Commission
                 <VisibilityIcon
                     sx ={{ marginLeft:1}}
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
-                Development Receipts
-                <VisibilityIcon
+                Registration for Investor
+                <CreateIcon
                     sx ={{ marginLeft:1}}
                 />
             </Button>
             <Button
-                sx={{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    width:'70%',
-                    alignSelf:'center',
-                    boxShadow:10,
-                    my:1,
-                    ':hover': {
-                      backgroundColor: theme.palette.secondary.hoverButton,
-                      color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 3,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                  }}
+                sx={ButtonStyling}
             >
                 
-                Create Receipt
+                Add new User
                 <CreateIcon  sx={{marginLeft:1}}  />
                 
             </Button>
 
           </Item>
-        </Grid>
+        </Grid>)}
       </>
     );
   }
