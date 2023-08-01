@@ -15,6 +15,7 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import GroupsIcon from '@mui/icons-material/Groups';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import { getMainAppFormDetails } from '../api/MainAppFrom';
 
 
 
@@ -108,6 +109,7 @@ export function FormRow1() {
             </Typography>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/MainAppForm')}
             >
                 View Main Forms
                 <VisibilityIcon
@@ -161,6 +163,7 @@ export function FormRow1() {
             </Typography>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/CashPayments')}
             >
                 Cash Payments
                 <VisibilityIcon
@@ -365,7 +368,7 @@ export function FormRow1() {
         {isAdmin && (<Grid item md={4} sm={6} xs={12}>
         <Item>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',marginTop:2 }}>
-                    <MapsHomeWorkIcon ptIcon fontSize="large"  sx ={{ width: '36vw',height: '8vh',}}/>
+                    <MapsHomeWorkIcon fontSize="large"  sx ={{ width: '36vw',height: '8vh',}}/>
 
             </Box>
             <Typography variant='h5'
