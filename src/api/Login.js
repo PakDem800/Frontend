@@ -1,5 +1,5 @@
 import { Troubleshoot } from "@mui/icons-material";
-import { Axios } from "./connection";
+import Axios from "./connection";
 import { useState } from "react";
 
 
