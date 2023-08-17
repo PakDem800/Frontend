@@ -46,6 +46,11 @@ function MainAppFormDetails () {
 
     const reason = data?.reason
 
+    const bg = status === 'active'
+    ? theme.palette.status.active
+    : status === 'inactive'
+    ? theme.palette.status.inactive
+    : theme.palette.status.cancelled;
 
 
     return (
@@ -78,10 +83,11 @@ function MainAppFormDetails () {
                     ml:'5%',
                     mb:'1%'
                         }}>
-            <Typography variant="h6" sx={{ 
-                                    backgroundColor:theme.palette.primary.main,
-                                    color:theme.palette.primary.background,
-                                    width:{ md: '22%', sm:'25%' , xs:'90%' }
+            <Typography variant="h6" 
+            sx={{ 
+              backgroundColor : bg,
+              color:theme.palette.primary.background,
+              width:{ md: '22%', sm:'25%' , xs:'90%' }
                          }}>
                 <span 
                     style={{fontFamily:'sans-serif' , fontWeight:'bold'}}>
@@ -109,7 +115,7 @@ function MainAppFormDetails () {
             </Box>
             
           </Box>
-          <GetCard data={data} />
+          <GetCard data={data} nav='Main' isExp={false} />
         </Box>
       );
             }

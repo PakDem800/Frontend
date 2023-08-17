@@ -35,13 +35,13 @@ export default function Footer() {
               Contact Us
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Islamabad , Pakistan
+            Office No 14, Second Floor, Majeed Plaza, Bank Road, Saddar, Rawalpindi
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Email: pakdem@example.com
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Phone: 090078601
+              Phone: 051-8315383 WhatsApp: 0312-9113369
             </Typography>
           </Grid>
           <Grid item xs={12} sm={4}>

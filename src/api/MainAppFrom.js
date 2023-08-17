@@ -1,35 +1,124 @@
 import Axios from "./connection";
 
+
+
 export const getMainAppFormDetails = async () => {
+  
+
+  try {
+    const response = await Axios.get('/allotmentForm/mainform/Files');
+    return response.data; // Return the response data
+  } catch (error) {
+     
+    
+    if (error.response && error.response.status === 401) {
+      if (error.response.data.message === 'Not Authorized No Token.') {
+        const errorMessage = error.response.data.message + ' Please Login First';
+        alert(errorMessage);
+        window.location.href = '/';
+      } else if (error.response.data.message === 'UnAuthorized Token.') {
+        const errorMessage = "You don't have access to this page.";
+        alert(errorMessage);
+        window.location.href = '/Home';
+      } else {
+        alert(error.response.data.message);
+      }
+    } else {
+      alert("An error occurred. Please try again later.");
+    }
+    
+    return null; // Return null in case of an error
+  }
+  
+};
+
+export const getMainAppForms = async () => {
+  
+
   try {
     const response = await Axios.get('/allotmentForm/mainform');
     return response.data; // Return the response data
   } catch (error) {
-    // If there's an error, check the response status and show the appropriate alert message
+     
+    
     if (error.response && error.response.status === 401) {
-      alert(error.response.data.message); 
+      if (error.response.data.message === 'Not Authorized No Token.') {
+        const errorMessage = error.response.data.message + ' Please Login First';
+        alert(errorMessage);
+        window.location.href = '/';
+      } else if (error.response.data.message === 'UnAuthorized Token.') {
+        const errorMessage = "You don't have access to this page.";
+        alert(errorMessage);
+        window.location.href = '/Home';
+      } else {
+        alert(error.response.data.message);
+      }
     } else {
       alert("An error occurred. Please try again later.");
     }
+    
     return null; // Return null in case of an error
   }
+  
 };
 
 export const getSingleDetails = async (ApplicationNo) => {
   try {
-    console.log(ApplicationNo)
+    
     const response = await Axios.get('/allotmentForm/mainform/details' , {
                                       params: { ApplicationNo },
                                      });
 
     return response.data; // Return the response data
   } catch (error) {
-    // If there's an error, check the response status and show the appropriate alert message
+     
+    
     if (error.response && error.response.status === 401) {
-      alert(error.response.data.message); 
+      if (error.response.data.message === 'Not Authorized No Token.') {
+        const errorMessage = error.response.data.message + ' Please Login First';
+        alert(errorMessage);
+        window.location.href = '/';
+      } else if (error.response.data.message === 'UnAuthorized Token.') {
+        const errorMessage = "You don't have access to this page.";
+        alert(errorMessage);
+        window.location.href = '/Home';
+      } else {
+        alert(error.response.data.message);
+      }
     } else {
       alert("An error occurred. Please try again later.");
     }
+    
+    return null; // Return null in case of an error
+  }
+};
+
+export const getApplicationFormRecord = async (fileNo) => {
+  try {
+    const response = await Axios.get('/ApplicationFormRecord' , {
+                                      params: { fileNo },
+                                     });
+
+    return response.data; // Return the response data
+  } catch (error) {
+     
+    
+    if (error.response && error.response.status === 401) {
+      if (error.response.data.message === 'Not Authorized No Token.') {
+        const errorMessage = error.response.data.message + ' Please Login First';
+        alert(errorMessage);
+        window.location.href = '/';
+      } else if (error.response.data.message === 'UnAuthorized Token.') {
+        const errorMessage = "You don't have access to this page.";
+        alert(errorMessage);
+        window.location.href = '/Home';
+      } else {
+        alert(error.response.data.message);
+      }
+    } else {
+      alert("An error occurred. Please try again later.");
+    }
+    
     return null; // Return null in case of an error
   }
 };

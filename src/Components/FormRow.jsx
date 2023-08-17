@@ -409,7 +409,7 @@ export function FormRow1() {
             >
                 
                 Plot Cancellation
-                <CreateIcon
+                <VisibilityIcon
                     sx ={{ marginLeft:1}}
                 />
                 
