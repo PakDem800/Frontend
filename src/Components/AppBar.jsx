@@ -84,6 +84,7 @@ export default function DrawerAppBar() {
       localStorage.removeItem('LoggedIn');
       localStorage.removeItem('token');
       localStorage.removeItem('type')
+      localStorage.removeItem('UserID')
     }
     navigate('/');
   };
@@ -257,11 +258,6 @@ export default function DrawerAppBar() {
                 <MenuItem onClick={handleOthersMenuClose}>
                   <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
                   Agent Wise File Update
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleOthersMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
-                  All Payments
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleOthersMenuClose}>

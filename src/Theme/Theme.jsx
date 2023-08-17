@@ -19,6 +19,11 @@ const theme = createTheme({
     },
     text:{
       primary:'#000000'
+    },
+    status:{
+      active:'#0E9494',
+      inactive: '#F7CA18',
+      cancelled : '#ff0000'
     }
   }
  })

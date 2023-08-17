@@ -12,19 +12,28 @@ export const loginUser = async (UserName, Password) => {
 
     localStorage.setItem("LoggedIn" , true)
     localStorage.setItem("token", response.data.token);
+    localStorage.setItem("UserID" , response.data.user.UserID)
     localStorage.setItem("type" , response.data.user.RolesID)
     return true;
 
 
   } catch (error) {
-    // If there's an error, check the response status and show the appropriate alert message
     if (error.response && error.response.status === 401) {
-      alert(error.response.data.message); 
-      // Show the error message sent from the server
-      return false
+      if (error.response.data.message === 'Not Authorized No Token.') {
+        const errorMessage = error.response.data.message + ' Please Login First';
+        alert(errorMessage);
+        window.location.href = '/';
+      } else if (error.response.data.message === 'UnAuthorized Token.') {
+        const errorMessage = "You don't have access to this page.";
+        alert(errorMessage);
+        window.location.href = '/Home';
+      } else {
+        alert(error.response.data.message);
+      }
     } else {
       alert("An error occurred. Please try again later.");
-      return false
     }
+    
+    return null; // Return null in case of an error
   }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Box } from "@mui/material";
-import { getMainAppFormDetails } from "../api/MainAppFrom";
+import { Box ,Typography } from "@mui/material";
+import { getMainAppForms } from "../api/MainAppFrom";
 import { useTheme } from '@emotion/react';
 import { useNavigate } from "react-router-dom";
 import DataTable from "../Components/Table";
@@ -19,7 +19,7 @@ function MainAppFrom() {
     const fetchData = async () => {
       try {
         
-        const responseData = await getMainAppFormDetails(); // Call the function to get the data
+        const responseData = await getMainAppForms(); // Call the function to get the data
         setData(responseData); // Set the data in the state
       } catch (error) {
         // Handle error if needed
@@ -29,7 +29,7 @@ function MainAppFrom() {
     fetchData(); // Call the async function to fetch and set the data
   }, []);
 
-  console.log(data); // Now data should have the response data from Axios
+  //console.log(data); // Now data should have the response data from Axios
 
   return (
     <Box 
@@ -38,10 +38,22 @@ function MainAppFrom() {
         backgroundColor: theme.palette.secondary.background,
         justifyContent:'center',
         flexDirection:'column',
-        paddingTop:'4%' 
+        paddingTop: { lg: '4%', md: '6%', sm: '8%', xs: '6%' }, 
        
     }}>
-        <DataTable data = { data }  nav = 'MainAppFormDetails' />
+      <Box sx={{
+        backgroundColor: theme.palette.secondary.background,
+        justifyContent:'center',
+        flexDirection:'row',
+        mx:'auto'
+        
+         }}
+    >
+        <Typography variant="h4" sx={{ flexGrow: 1 , mb:'1%' }}>
+             Main Application Form
+        </Typography>
+        </Box>
+        <DataTable data = { data }  nav = 'MainAppFormDetails'  isPayment = {false} />
     </Box>
     )
 }
