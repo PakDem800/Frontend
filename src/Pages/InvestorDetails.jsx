@@ -5,10 +5,10 @@ import {Button} from '@mui/material';
 import { useTheme } from '@emotion/react';
 import { useNavigate , useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { getCancelledPlotDetails } from '../api/Plots';
+import { getInvestor } from '../api/Agents';
 import GetCard from '../Components/Card';
 
-function PlotCancelDetails () {
+function InvestorDetails () {
 
     const navigate = useNavigate()
     const theme = useTheme();
@@ -22,7 +22,7 @@ function PlotCancelDetails () {
 
         const fetchData = async () => {
           try {        
-            const responseData = await getCancelledPlotDetails(id); 
+            const responseData = await getInvestor(id); 
             setData(responseData); 
           } catch (error) {
             // Handle error if needed
@@ -53,14 +53,14 @@ function PlotCancelDetails () {
             }}
           >
             <Typography variant="h4" sx={{ flexGrow: 1 , mb:'1%' }}>
-              Plot Cancelled Details
+              Investor Details
             </Typography>
 
             
           </Box>
-          <GetCard data={data} edit = {false} isExp={true}  />
+          <GetCard data={data} edit={false} isExp={true} />
         </Box>
       );
             }
 
-export default PlotCancelDetails;
+export default InvestorDetails;

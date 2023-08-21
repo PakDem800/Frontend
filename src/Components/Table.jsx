@@ -1,32 +1,65 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import theme from '../Theme/Theme';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import LinearWithValueLabel from './Loader';
 
+export default function DataTable({ data, nav, isPayment }) {
+  const navigate = useNavigate();
 
-export default function DataTable({ data , nav, isPayment}) {
-  if (!data || data.length === 0) {
-    return <div>No data available.</div>;
+  const [showLoading, setShowLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  if (showLoading && (!data || data.length === 0)) {
+    return (
+      <Box
+        sx={{
+          width: '90%',
+          mx: 'auto',
+          pt: '5.4%',
+          pb: '5.4%',
+        }}
+      >
+        <Typography>Loading Data...</Typography>
+        <LinearWithValueLabel />
+      </Box>
+    );
   }
-  
 
-  const navigate = useNavigate()
+  if (!data || data.length === 0) {
+    return (
+      <Box sx={{ textAlign: 'center', marginTop: '2%' }}>
+          <Typography sx ={{padding:'3%'}} >
+            No Data Available
+          </Typography>
+      </Box>
+    );
+  }
 
   const keys = Object.keys(data[0]);
-  
 
   const showViewPrintColumn = !isPayment;
 
   const formatHeader = (key) => {
     const words = key.split('_');
-    const formattedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+    const formattedWords = words.map(
+      (word) => word.charAt(0).toUpperCase() + word.slice(1)
+    );
     return formattedWords.join(' ');
   };
 
- 
   const columns = [
-    ...keys.slice(1).map(key => ({
+    ...keys.slice(1).map((key) => ({
       field: key,
       headerName: formatHeader(key),
       suppressSizeToFit: true,
@@ -41,10 +74,19 @@ export default function DataTable({ data , nav, isPayment}) {
       renderCell: (params) => {
         return (
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Button variant="outlined" color="primary" sx={{ mb: 1 }} onClick={() => handleAction1(params.row.id)}>
+            <Button
+              variant="outlined"
+              color="primary"
+              sx={{ mb: 1 }}
+              onClick={() => handleAction1(params.row.id)}
+            >
               View
             </Button>
-            <Button variant="outlined" color="primary" onClick={() => handleAction1(params.row.id)}>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => handleAction1(params.row.id)}
+            >
               Print
             </Button>
           </Box>
@@ -53,43 +95,22 @@ export default function DataTable({ data , nav, isPayment}) {
     },
   ].filter(Boolean);
 
-
-
-
-
-
-
-  // Create rows with the additional "Action1" and "Action2" columns
   const rows = data.map((item, index) => {
     const rowData = {};
-    keys.slice(1).forEach(key => {
+    keys.slice(1).forEach((key) => {
       rowData[key] = item[key];
     });
-    return { id: item[keys[0]], ...rowData , Action1: '' };
+    return { id: item[keys[0]], ...rowData, Action1: '' };
   });
 
-  // Define the handlers for the buttons using the identifier key parameter
   const handleAction1 = (id) => {
-    navigate(`/${nav}/${id}`)
-  };
-
-  const handleEdit = (id) => {
-    // Add your logic for the "Edit" button action here
-    console.log('Edit button clicked for id:', id);
-  };
-
-  const handleDelete = (id) => {
-    // Add your logic for the "Delete" button action here
-    console.log('Delete button clicked for id:', id);
+    navigate(`/${nav}/${id}`);
   };
 
   const renderCustomCell = (params) => {
-
     return (
-      <div style={{ padding: 8, lineHeight: '1.5rem'  }}>
-  
+      <div style={{ padding: 8, lineHeight: '1.5rem' }}>
         <div>{params.value}</div>
-        {/* Add other content or styling as needed */}
       </div>
     );
   };

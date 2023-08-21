@@ -116,32 +116,32 @@ export function FormRow1() {
                     sx ={{ marginLeft:1}}
                 />
             </Button>
-            <Typography variant='p'
-                sx = {{
-                    color: theme.palette.text.primary,
-                    padding:'3%',
-                    alignSelf:'flex-start',
-                    marginLeft:'6%'
-                
-                }}
-                >
-                Create Main File:
-                
-            </Typography>
-            
 
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/Create/Main')}
+
             >
                 
-                Create General
+                Create Main App Form
                 <CreateIcon  sx={{marginLeft:1}}  />
                 
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/Create/RegistyInteqal')}
+
             >
-                Create Deal
+                Create Inteqal/Registry
+                <CreateIcon  sx={{marginLeft:1}}  />
+            </Button>
+
+            <Button
+                sx={ButtonStyling}
+                onClick={() => navigate('/Create/MainRefund')}
+
+            >
+                Create Main Refund
                 <CreateIcon  sx={{marginLeft:1}}  />
             </Button>
 
@@ -172,6 +172,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/CAPayments')}
+
             >
                 CA Payments
                 <VisibilityIcon
@@ -180,6 +182,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/OnlinePayments')}
+
             >
                 Online Payments
                 <VisibilityIcon
@@ -188,6 +192,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/PaymentSchedule')}
+
             >
                 Payment schedules
                 <VisibilityIcon
@@ -214,6 +220,8 @@ export function FormRow1() {
             </Typography>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/RegularReceipt')}
+
             >
                 Regular Receipts
                 <VisibilityIcon
@@ -222,6 +230,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/TransferReceipt')}
+
             >
                 Transfer Receipts
                 <VisibilityIcon
@@ -230,6 +240,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/DevelopmentReciept')}
+
             >
                 Development Receipts
                 <VisibilityIcon
@@ -238,6 +250,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/Create/Receipt')}
+
             >
                 
                 Create Receipt
@@ -332,6 +346,8 @@ export function FormRow1() {
             </Typography>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/Expenditure')}
+
             >
                 Expenditures
                 <VisibilityIcon
@@ -340,6 +356,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/MonthlyReport')}
+
             >
                 Month Wise Report
                 <VisibilityIcon
@@ -348,6 +366,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/DailyReport')}
+
             >
                 Daily Recovery Report
                 <VisibilityIcon
@@ -356,6 +376,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/Create/Expenditure')}
+
             >
                 Add Expenditure
                 <CreateIcon
@@ -382,6 +404,8 @@ export function FormRow1() {
             </Typography>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/AllPlots')}
+
             >
                 All Plots
                 <VisibilityIcon
@@ -390,6 +414,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/PlotPrices')}
+
             >
                 Plots Price
                 <VisibilityIcon
@@ -398,6 +424,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/PlotAllotment')}
+
             >
                 Plot Allotment
                 <VisibilityIcon
@@ -406,6 +434,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/PlotCancellation')}
+
             >
                 
                 Plot Cancellation
@@ -416,6 +446,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/Create/PlotTransfer')}
+
             >
                 
                 Plot Transfer
@@ -444,6 +476,8 @@ export function FormRow1() {
             </Typography>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/Agents')}
+
             >
                 All Agents
                 <VisibilityIcon
@@ -452,6 +486,8 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/AgentCommission')}
+
             >
                 Agent Commission
                 <VisibilityIcon
@@ -460,14 +496,18 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('/Investors')}
+
             >
-                Registration for Investor
-                <CreateIcon
+                All Investors
+                <VisibilityIcon
                     sx ={{ marginLeft:1}}
                 />
             </Button>
             <Button
                 sx={ButtonStyling}
+                onClick={() => navigate('Create/')}
+
             >
                 
                 Add new User

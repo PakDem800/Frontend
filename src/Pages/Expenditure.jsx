@@ -85,7 +85,7 @@ function Expenditure() {
       )}
     </Formik>
         </Box>
-        <DataTable data = { data }  nav = 'Expenditure/Details' isPayment = {false} />
+        {data && <DataTable data = { data }  nav = 'Expenditure/Details' isPayment = {false} />}
     </Box>
     )
 }

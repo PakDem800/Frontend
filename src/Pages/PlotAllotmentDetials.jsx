@@ -58,7 +58,7 @@ function PlotAllotmentDetails () {
 
             
           </Box>
-          <GetCard data={data} isExp={true} />
+          <GetCard data={data} edit = {false} isExp={true} />
         </Box>
       );
             }

@@ -87,7 +87,7 @@ function PaymentSchedule() {
                 }}
             onClick={handleConfirmButtonClick}>Get Schedule</Button>
         </Box>
-        <DataTable data = { data }  nav = 'Payments' isPayment = {true} />
+       {data && <DataTable data = { data }  nav = 'Payments' isPayment = {true} />}
     </Box>
     )
 }
