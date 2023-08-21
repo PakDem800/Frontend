@@ -189,6 +189,16 @@ export default function DrawerAppBar() {
                     Create Main Refund
                   </Link>
                 </MenuItem>
+                <MenuItem onClick={handleAllotmentMenuClose}>
+                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                    Transfer Files
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleAllotmentMenuClose}>
+                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                    Registry / Inteqal
+                  </Link>
+                </MenuItem>
               </Menu>
               <Button onClick={handleReceiptsMenuOpen} 
                   sx={{ color: theme.palette.secondary.text, fontWeight: 'bold',

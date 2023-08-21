@@ -15,26 +15,15 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { DeleteMainAppform } from '../CreateForms/Apis/MainAppFormApi';
 import { deletePlot ,deletePlotPrice } from '../CreateForms/Apis/PlotsApi';
-import LinearWithValueLabel from './Loader';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function GetCard({ data ,nav ,edit = true,  isExp }) {
+export default function TransferCard({ data ,nav ,edit = true,  isExp }) {
   if (!data || Object.keys(data).length === 0) {
-    return <Box
-            sx={{
-              width: '90%',
-              mx: 'auto',
-              pt: '5.4%',
-              pb: '5.4%',
-            }}
-          >
-            <Typography>Loading Data...</Typography>
-            <LinearWithValueLabel />
-          </Box>;
+    return <div>No data available.</div>;
   }
 
   const navigate = useNavigate()
@@ -122,6 +111,7 @@ export default function GetCard({ data ,nav ,edit = true,  isExp }) {
         alignItems: 'center',
       }}
     >
+    
       <Card
         sx={{
           display: 'flex',
@@ -133,57 +123,19 @@ export default function GetCard({ data ,nav ,edit = true,  isExp }) {
           boxShadow: 10,
         }}
       >
-        <Grid container spacing={2}>
-          {isAdmin && (
+        <Grid container spacing={1}>
             <Grid
               item
               xs={12}
-              sx={{ display: 'flex', justifyContent: { sm: 'flex-end', xs: 'center' }, mt: 1 }}
+              sx={{ display: 'flex', justifyContent:  'center' , mt: 1 }}
             >
-              {
-              edit && (
-                <>
-                <Button
-                variant="outlined"
-                color="primary"
-                sx={{
-                  mr: { lg: 2, md: 2, sm: 1, xs: 1 },
-                }}
-                onClick={handleEdit}
-              >
-                Edit
-              </Button>
-              </>
-              )}
-              {!isExp && (
-                <>
-                  <Button variant="outlined" onClick={handleClickOpen}>
-                      Delete
-                    </Button>
-                    <Dialog
-                      open={open}
-                      TransitionComponent={Transition}
-                      keepMounted
-                      onClose={handleClose}
-                      aria-describedby="alert-dialog-slide-description"
-                    >
-                      <DialogTitle>{"Are You Sure You Want to Delete?"}</DialogTitle>
-                      <DialogContent>
-                        <DialogContentText id="alert-dialog-slide-description">
-                          Note : You cant Undo this operation
-                        </DialogContentText>
-                      </DialogContent>
-                      <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button variant='outlined' color="error" onClick={handleDelete}>Delete</Button>
-                      </DialogActions>
-                    </Dialog>
-                </>
-              )}
+             <Typography variant='h4'>
+                    {edit ? "" : "Previous "} Client Details
+                </Typography>
             </Grid>
-          )}
+          
           {keys.map((key, index) => (
-            <Grid item lg={4} md={4} sm={6} xs={12} key={key}>
+            <Grid item lg={2} md={3} sm={4} xs={6} key={key}>
               <CardContent
                 sx={{
                   display: 'flex',

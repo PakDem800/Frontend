@@ -45,6 +45,11 @@ import AgentWiseFile from '../Pages/AgentWiseFile';
 import ErrorScreen from '../Components/Error';
 import ScrollToTopButton from '../Components/ScrollToTop';
 import Create from './routesForCreate';
+import AllInvestors from '../Pages/Investors';
+import InvestorDetails from '../Pages/InvestorDetails';
+import TransferFiles from '../Pages/TransferFile';
+import CashFiles from '../Pages/CashFiles';
+import InstallmentFiles from '../Pages/InstallmentFiles';
 
 function Body() {
     const theme = useTheme();
@@ -54,12 +59,14 @@ function Body() {
       
       <Navbar />
       <ScrollToTopButton />
-      <Box height={50} sx={{backgroundColor :theme.palette.secondary.background , }} />
+      <Box height={50} sx={{backgroundColor :theme.palette.secondary.background }} />
         <Routes>
             <Route path='/'>
                 { /* Tables */ }
                 <Route path="Home" element={ <Home /> } />
                 <Route path='MainAppForm' element = { <MainAppFrom />} />
+                <Route path='CashFiles' element={<CashFiles />}/>
+                <Route path='InstallmentFiles' element= { <InstallmentFiles />} />
                 <Route path='ApplicationFormRecord' element = {<ApplicationFormRecord />} />
                 <Route path='ReceiptFinder' element = {<ReceiptFinder />} />
                 <Route path='CashPayments' element = {<CashPayment />} />
@@ -73,6 +80,7 @@ function Body() {
                 <Route path='DailyReport' element={<DailyReport />} />
                 <Route path='AllPlots' element={<AllPlots />} />
                 <Route path='Agents' element={<AllAgents />} />
+                <Route path='Investors' element = {<AllInvestors />} />
                 <Route path='PlotPrices' element={<PlotPrices />} />
                 <Route path='PlotAllotment' element={<PlotAllotments />} />
                 <Route path='LedgerReport' element={<LedgerReport />} />
@@ -82,7 +90,9 @@ function Body() {
                 <Route path='DevelopmentReciept' element = {<DevelopmentReceipt/>} />
                 <Route path='AgentCommission' element = {<AgentCommission />} />
                 <Route path='AgentWiseFile' element = {<AgentWiseFile />} />
+                <Route path='TransferFiles' element={<TransferFiles/>} />
                 <Route path='RefundSchedule' element = {<RefundSchedule />} />
+
                 { /* Details */ }
                 <Route path='ReceiptDetails/:id' element = {<ReceiptDetails />} />
                 <Route path='Plot/details/:id' element = {<PlotDetails />} />
@@ -92,6 +102,7 @@ function Body() {
                 <Route path='Expenditure/Details/:id' element = {<ExpenditureDetails />} />
                 <Route path='AgentPayment/details/:id' element = {<AgentPaymentDetails />} />
                 <Route path='Agent/details/:id' element = {<AgentDetails />} />
+                <Route path='Investor/details/:id' element = {<InvestorDetails />} />
                 <Route path='MainAppFormDetails/:id' element = {<MainAppFormDetails />} />
 
                 { /* Create */ }

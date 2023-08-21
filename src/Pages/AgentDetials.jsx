@@ -58,7 +58,7 @@ function AgentDetails () {
 
             
           </Box>
-          <GetCard data={data}  />
+          <GetCard data={data} edit={false} isExp={true} />
         </Box>
       );
             }
