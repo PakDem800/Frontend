@@ -24,14 +24,26 @@ import { useNavigate } from 'react-router-dom';
 const drawerWidth = 200;
 
 const navItems = [
-  'Home',
-  'Create General File Form',
-  'Create Deal File Form',
-  'Refund Schedule',
-  'Create Main Refund',
-  'Transfer Receipts',
-  'Development Charges',
-  'Ledger'
+  {name : 'Home' , link : "/Home"},
+  {name : 'Create Main Form' , link : "/Create/Main"},
+  {name : 'Main Form' , link : "MainAppForm"},
+  {name: 'Refund Schedule' , link:  "/RefundSchedule"},
+  {name: 'Create Main Refund',link: "/Create/Refund"},
+  {name: 'Transfer Files',link: "/TransferFiles"},
+  {name: 'Cash files',link: "/CashFiles"},
+  {name: 'Installment files',link: "/InstallmentFiles"},
+  {name: 'Token Money',link: "/TokenMoney"},
+  {name: 'Registry Inteqal',link: "/RegistryInteqal"},
+  {name : 'Regular Receipts' , link : '/RegularReceipt'},
+  {name : 'Transfer Receipts' , link : '/TransferReceipt'},
+  {name : 'Development Receipts' , link : '/DevelopmentReciept'},
+  {name: 'Ledger',link: "/Ledger"},
+  {name: 'Agent Voucher',link: "/AgentVouchers"},
+  {name: 'Agent Payment List',link: "/AgentPaymentList"},
+  {name: 'Application record',link: "/MultipleFiles"},
+  {name: 'Receipt Record Finder',link: "/ReceiptFinder"},
+  {name: 'Agent Wise File Update',link: "/AgentWiseFile"},
+
 ];
 
 export default function DrawerAppBar() {
@@ -97,8 +109,8 @@ export default function DrawerAppBar() {
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
-                {item}
+              <Link href={item.link} sx={{ textDecoration: 'none', color: 'black' }}>
+                {item.name}
               </Link>
             </ListItemButton>
           </ListItem>
@@ -142,7 +154,10 @@ export default function DrawerAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h4" component="div" sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row', textAlign: 'center', alignItems: 'center' }} >
+            <Typography variant="h4" component="div" 
+                onClick={() => { navigate('/Home'); }}
+                   sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row',
+                    textAlign: 'center', alignItems: 'center' }} >
               <span style={{ color: theme.palette.secondary.text, fontWeight: 'bolder', fontStyle: 'oblique' }}>PAK
                 <span style={{ color: theme.palette.secondary.text }}>DEM</span></span>
             </Typography>
@@ -170,32 +185,48 @@ export default function DrawerAppBar() {
                 MenuListProps={{onMouseLeave: handleAllotmentMenuClose}}
               >
                 <MenuItem onClick={handleAllotmentMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/MainAppForm" sx={{ textDecoration: 'none', color: 'black' }}>
                     Main Application Forms
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleAllotmentMenuClose}>
-                  <Link  sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/Create/Main"
+                    sx={{ textDecoration: 'none', color: 'black' }}>
                     Create Main Application
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleAllotmentMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/RefundSchedule" sx={{ textDecoration: 'none', color: 'black' }}>
                     Refund Schedule
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleAllotmentMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/Create/Refund" sx={{ textDecoration: 'none', color: 'black' }}>
                     Create Main Refund
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleAllotmentMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/TransferFiles" sx={{ textDecoration: 'none', color: 'black' }}>
                     Transfer Files
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleAllotmentMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/CashFiles" sx={{ textDecoration: 'none', color: 'black' }}>
+                    Cash Files
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleAllotmentMenuClose}>
+                  <Link href="/InstallmentFiles" sx={{ textDecoration: 'none', color: 'black' }}>
+                    Installment Files
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleAllotmentMenuClose}>
+                  <Link href="/TokenMoney" sx={{ textDecoration: 'none', color: 'black' }}>
+                    Token Money
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleAllotmentMenuClose}>
+                  <Link href="/RegistryInteqal" sx={{ textDecoration: 'none', color: 'black' }}>
                     Registry / Inteqal
                   </Link>
                 </MenuItem>
@@ -214,22 +245,22 @@ export default function DrawerAppBar() {
                 MenuListProps={{onMouseLeave: handleReceiptsMenuClose}}
               >
                 <MenuItem onClick={handleReceiptsMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/RegularReceipt" sx={{ textDecoration: 'none', color: 'black' }}>
                     Regular Receipts
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleReceiptsMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/TransferReceipt" sx={{ textDecoration: 'none', color: 'black' }}>
                     Transfer Receipts
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleReceiptsMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/DevelopmentReciept" sx={{ textDecoration: 'none', color: 'black' }}>
                     Development Charges
                   </Link>
                 </MenuItem>
               </Menu>
-              <Button onClick={() => { navigate('/Home'); }} sx={{ color: theme.palette.secondary.text, fontWeight: 'bold', marginRight: 4, ':hover': { borderBottom: '4px solid #ffffff' } }}>
+              <Button onClick={() => { navigate('/LedgerReport'); }} sx={{ color: theme.palette.secondary.text, fontWeight: 'bold', marginRight: 4, ':hover': { borderBottom: '4px solid #ffffff' } }}>
                 Ledger
               </Button>
               <Button onClick={handleOthersMenuOpen} 
@@ -246,44 +277,43 @@ export default function DrawerAppBar() {
 
               >
                 <MenuItem onClick={handleOthersMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/AgentVouchers" sx={{ textDecoration: 'none', color: 'black' }}>
                   Agent Payment Voucher
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleOthersMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/AgentPaymentList" sx={{ textDecoration: 'none', color: 'black' }}>
                   Agent Payment list
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleOthersMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
-                  Application Form Record Finder
+                  <Link href="/MultipleFiles" sx={{ textDecoration: 'none', color: 'black' }}>
+                  Application Record Multiple Files
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleOthersMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/ReceiptFinder" sx={{ textDecoration: 'none', color: 'black' }}>
                   Receipt Record Finder
                   </Link>
                 </MenuItem>
                 <MenuItem onClick={handleOthersMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
+                  <Link href="/AgentWiseFile" sx={{ textDecoration: 'none', color: 'black' }}>
                   Agent Wise File Update
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleOthersMenuClose}>
-                  <Link href="#" sx={{ textDecoration: 'none', color: 'black' }}>
-                  Short Fall of Installemnt
                   </Link>
                 </MenuItem>
               </Menu>
               <Button
                 sx={{
-                  color: theme.palette.secondary.text,
-                  backgroundColor: theme.palette.secondary.Button,
+                  
+                  color: theme.palette.secondary.main,
+                  backgroundColor: theme.palette.secondary.hoverButton,
+
                   fontWeight: 'bold',
+                  
                   ':hover': {
-                    backgroundColor: theme.palette.secondary.hoverButton,
-                    color: theme.palette.secondary.main,
+                    color: theme.palette.text.primary,
+                    backgroundColor: theme.palette.secondary.Button,
+                    
                   },
                   border: 1,
                   borderRadius: 3,

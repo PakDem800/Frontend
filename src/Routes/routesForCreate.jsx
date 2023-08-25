@@ -16,6 +16,10 @@ import CreateInvestor from '../CreateForms/InvestorC';
 import CreateAgent from '../CreateForms/AgentC';
 import CreateTransferFile from '../CreateForms/TransferFileC';
 import CreateRefund from '../CreateForms/RefundC';
+import CreateRegistryInteqal from '../CreateForms/RegistryInteqalC';
+import CreateTokenMoney from '../CreateForms/TokenC';
+import CreateMonthlyReport from '../CreateForms/MonthlyReportC';
+import CreateUser from '../CreateForms/UserC';
 
 function Create() {
     const theme = useTheme();
@@ -36,7 +40,11 @@ function Create() {
                 <Route path='PlotAllotment' element={<CreatePlotAllotment/>} />
                 <Route path='Agent' element={<CreateAgent />} />
                 <Route path='Transfer' element={<CreateTransferFile/>} />
+                <Route path='RegistryInteqal' element={<CreateRegistryInteqal />} />
                 <Route path='Refund' element = {<CreateRefund />} /> 
+                <Route path='User' element={<CreateUser />}/>
+                <Route path='MonthlyReport' element={<CreateMonthlyReport />} />
+                <Route path='TokenMoney' element={<CreateTokenMoney />} />
                 <Route path='CancellationLetter' element = {<CreateCancellationLetter/>} />
                 <Route path='Testing' element = {<Fake />} />
 

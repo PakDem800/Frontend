@@ -63,8 +63,8 @@ function DailyReport() {
         backgroundColor: theme.palette.secondary.background,
         justifyContent:'center',
         flexDirection:'column',
-        paddingTop: { lg: '4%', md: '6%', sm: '8%', xs: '6%' },
-        height : data ? 'auto' : 247
+        paddingTop: { lg: '5%', md: '6%', sm: '8%', xs: '6%' },
+        height : data ? 'auto' : '50vh'
        
     }}>
         <Box sx={{
@@ -82,12 +82,13 @@ function DailyReport() {
       {({ values, setFieldValue, handleBlur, errors, touched }) => (
         <Form>
           <DateSelector values={values} setFieldValue={setFieldValue} handleBlur={handleBlur} errors={errors} touched={touched} />
-          <Button type="submit" variant="outlined" sx={{mt:'2%'}}>Search</Button>
+          <Button type="submit" variant="outlined" sx={{my:'2%'}}>Search</Button>
         </Form>
       )}
     </Formik>
         </Box>
-        <DataTable data = { data }  nav = '#' isPayment = {true} />
+        {data && 
+        (<DataTable data = { data }  nav = '#' isPayment = {true} />)}
 
     </Box>
     )

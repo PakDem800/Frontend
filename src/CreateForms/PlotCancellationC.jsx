@@ -69,7 +69,7 @@ function CreateCancellationLetter() {
       validateOnBlur: false,
       onSubmit: (values, action) => {
         console.log(values);
-        action.resetForm();
+         
       },
     });
 

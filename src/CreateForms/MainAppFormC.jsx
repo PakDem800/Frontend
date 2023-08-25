@@ -73,7 +73,7 @@ function CreateMainAppForm() {
     AppRemarks : "",
     RefMobileNo : "",
     Agent : "",
-    CommissionPercentage : 0,
+    CommissionPercentage : null,
     NoteNo : "",
     IsActive : true,
     IsPlotCancel : "",
@@ -147,7 +147,6 @@ function CreateMainAppForm() {
     useFormik({
       initialValues,
       validationSchema: Yup.object({
-        Date: Yup.date().required("Date is required"),
         FileNo: Yup.string().required("File No is required"),
         ApplicantName: Yup.string().required("Please Enter the ApplicantName"),
         Total_Installment: Yup.number().required("Total Installments is required!"),
@@ -162,7 +161,7 @@ function CreateMainAppForm() {
       validateOnBlur: false,
       onSubmit: (values, action) => {
         console.log(values);
-        action.resetForm();
+         
       },
     });
 
@@ -193,7 +192,7 @@ function CreateMainAppForm() {
          values.FileNo &&
         values.ApplicantName && values.Total_Installment &&
         values.PermanentAddress && values.FatherOrHusband &&
-        values.TotalAmount && values.DownPayment
+        values.TotalAmount && values.DownPayment 
         ) { 
   
             
@@ -265,7 +264,7 @@ function CreateMainAppForm() {
             navigate(`/MainAppFormDetails/${data.ApplicationNo}`);
             }
             else{
-            alert('Technical Error')
+            alert('Please Retry')
             }
         }
         else {
@@ -335,9 +334,7 @@ function CreateMainAppForm() {
               alert('Application Form created')
               navigate('/MainAppForm')
             }
-            else{
-              alert('Technical Error')
-            }
+            
        }
     }
       
@@ -377,11 +374,6 @@ function CreateMainAppForm() {
                       onChange={(value) => setFieldValue("Date", value, true)}
                       onBlur={handleBlur}
                       label="Date *" />
-                  </Box>
-                  <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-                    {errors.Date && touched.Date ? (
-                      <p style={{ color: 'red', marginLeft: 4, marginBottom: 0 }}>{errors.Date}</p>
-                    ) : null}
                   </Box>
                 </Box>
                 
@@ -464,7 +456,7 @@ function CreateMainAppForm() {
             ) : null}
  
             </Grid>
-              <Grid item lg={3} md={3} sm={6} xs={12}>
+            <Grid item lg={3} md={3} sm={6} xs={12}>
             <TextField sx={{ width: '100%' }}
               id="outlined-multiline-flexible"
               label="Father Or Husband *"
@@ -531,6 +523,20 @@ function CreateMainAppForm() {
                 <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.DownPayment}</p>
               ) : null}
           </Grid>
+
+          <Grid item lg={3} md={3} sm={6} xs={12}>
+              <TextField sx={{  width: '100%' }}
+                id="outlined-multiline-flexible"
+                label="Down Payment Commission"
+                type='number'    
+                color='secondary'
+                name='GrandTotal'
+                value={values.GrandTotal}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+          </Grid>
+
           <Grid item lg={3} md = {3} sm = {6} xs={12}>
           <FormControl sx={{width: '100%' }}>
               <InputLabel >File Type</InputLabel>
@@ -704,15 +710,17 @@ function CreateMainAppForm() {
           <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
-                label="Sub Agent Commission"
+                label="Commission Percentage"
                 type='number'    
                 color='secondary'
-                name='SubAgentComm'
-                value={values.SubAgentComm}
+                name='CommissionPercentage'
+                value={values.CommissionPercentage}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
           </Grid>
+
+          
 
           <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
@@ -757,7 +765,7 @@ function CreateMainAppForm() {
           </FormControl>
           </Grid>
 
-          <Grid item lg={4} md={4} sm={6} xs={12}>
+          <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
                 label="Investor Amount"
@@ -769,7 +777,7 @@ function CreateMainAppForm() {
               />
           </Grid>
 
-          <Grid item lg={4} md={4} sm={6} xs={12}>
+          <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
                 label="Investor Down Payment"
@@ -781,7 +789,7 @@ function CreateMainAppForm() {
               />
           </Grid>
 
-          <Grid item lg={4} md={4} sm={6} xs={12}>
+          <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
                 label="Remarks"

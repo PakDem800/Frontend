@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Box ,Typography } from "@mui/material";
+import { Box, Button , Typography} from "@mui/material";
+
+import CreateIcon from '@mui/icons-material/Create';
 import { getMainAppForms } from "../api/MainAppFrom";
 import { useTheme } from '@emotion/react';
 import { useNavigate } from "react-router-dom";
@@ -29,7 +31,19 @@ function MainAppFrom() {
     fetchData(); // Call the async function to fetch and set the data
   }, []);
 
-  //console.log(data); // Now data should have the response data from Axios
+  const ButtonStyling = {
+    alignSelf: 'start' , paddingX :2 , paddingY:1,
+    marginLeft:'5%',
+    border:'2px solid black',
+    justifyContent:'start',
+    color:theme.palette.text.primary,
+    alignItems:'start',
+    ':hover': {
+        backgroundColor: theme.palette.secondary.hoverButton,
+        color: theme.palette.secondary.main,
+        borderColor: theme.palette.secondary.main
+      },
+    }
 
   return (
     <Box 
@@ -53,6 +67,11 @@ function MainAppFrom() {
              Main Application Form
         </Typography>
         </Box>
+        <Button  sx={ButtonStyling}
+                onClick={() => navigate('/Create/Main')}
+            >
+            Create Main <CreateIcon sx={{ml:1}} />
+        </Button>
         <DataTable data = { data }  nav = 'MainAppFormDetails'  isPayment = {false} />
     </Box>
     )

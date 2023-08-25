@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Box ,Typography , Button } from "@mui/material";
+import { Box, Button , Typography} from "@mui/material";
+import CreateIcon from '@mui/icons-material/Create';
 import { useTheme } from '@emotion/react';
 import { useNavigate } from "react-router-dom";
 import DataTable from "../Components/Table";
@@ -36,6 +37,20 @@ function AgentVouchers() {
 
   const GrandTotal = data?.reduce((sum, item) => sum + item.Amount, 0)
 
+  const ButtonStyling = {
+    alignSelf: 'start' , paddingX :2 , paddingY:1,
+    marginLeft:'5%',
+    border:'2px solid black',
+    justifyContent:'start',
+    color:theme.palette.text.primary,
+    alignItems:'start',
+    ':hover': {
+        backgroundColor: theme.palette.secondary.hoverButton,
+        color: theme.palette.secondary.main,
+        borderColor: theme.palette.secondary.main
+      },
+    }
+
   return (
     <Box 
     sx={{
@@ -44,7 +59,7 @@ function AgentVouchers() {
         justifyContent:'center',
         flexDirection:'column',
         paddingTop: { lg: '4%', md: '6%', sm: '8%', xs: '6%' },
-        height : data ? 'auto' : 247,
+        height : data ? 'auto' : "70vh",
         paddingBottom:'1%'
        
     }}>
@@ -59,7 +74,13 @@ function AgentVouchers() {
         <Typography variant="h4" sx={{ flexGrow: 1 , mb:'1%' }}>
              Agent Vouchers
         </Typography>
+        
         </Box>
+        <Button  sx={ButtonStyling}
+                onClick={() => navigate('/Create/Voucher')}
+            >
+            Create Voucher <CreateIcon sx={{ml:1}} />
+        </Button>
         <Box sx={{
         backgroundColor: theme.palette.secondary.background,
         justifyContent:'center',
@@ -90,7 +111,7 @@ function AgentVouchers() {
                 }}
             onClick={handleConfirmButtonClick}>Get Record</Button>
         </Box>
-        <DataTable data = { data }  nav = 'Payments' isPayment = {true} />
+        {data && <DataTable data = { data }  nav = 'Payments' isPayment = {true} />}
         {data && 
         <Box sx={{padding:'1%'}}>
             <Typography variant = "h4" sx={{fontFamily:'sans-serif' , fontWeight:'bold'}}>

@@ -39,7 +39,7 @@ export default function DataTable({ data, nav, isPayment }) {
   if (!data || data.length === 0) {
     return (
       <Box sx={{ textAlign: 'center', marginTop: '2%' }}>
-          <Typography sx ={{padding:'3%'}} >
+          <Typography sx ={{padding:'5%'}} >
             No Data Available
           </Typography>
       </Box>
@@ -68,7 +68,7 @@ export default function DataTable({ data, nav, isPayment }) {
     })),
     showViewPrintColumn && {
       field: 'View',
-      headerName: 'View',
+      headerName: 'Action',
       flex: 1,
       headerClassName: 'super-app-theme--header',
       renderCell: (params) => {
@@ -120,12 +120,12 @@ export default function DataTable({ data, nav, isPayment }) {
       <DataGrid
         sx={{
           backgroundColor: theme.palette.primary.background,
-          border: '1 solid black',
+          border: '1.5px solid #009688',
           borderRadius: 5,
           boxShadow: 10,
           width:'96%',
           '& .super-app-theme--header': {
-            backgroundColor: 'white',
+            
             color: 'black',
             fontFamily: 'sans-serif',
             fontWeight: 800,
@@ -133,17 +133,21 @@ export default function DataTable({ data, nav, isPayment }) {
           
           },
           "& .MuiDataGrid-columnHeaderTitle": {
+            
             whiteSpace: "normal",
             lineHeight: "normal"
           },
           "& .MuiDataGrid-columnHeader": {
+            
             height: "unset !important"
           },
           "& .MuiDataGrid-columnHeaders": {
+            borderBottom:'1.5px #009688 solid',
             minHeight : '80px !important',
             maxHeight: "168px !important"
           },
             "& .MuiDataGrid-cellContent": {
+              
               whiteSpace: "normal",
               lineHeight: "normal",
             

@@ -66,7 +66,7 @@ function CreatePlotAllotment() {
       validateOnBlur: false,
       onSubmit: (values, action) => {
         console.log(values);
-        action.resetForm();
+         
       },
     });
 
@@ -78,7 +78,7 @@ function CreatePlotAllotment() {
       if (selectedFile ) { 
        
        
-            const submission =   createAllotment(
+            const submission = await  createAllotment(
                                         values.Date,
                                         selectedFile
                                         )

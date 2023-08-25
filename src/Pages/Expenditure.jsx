@@ -7,6 +7,7 @@ import { Formik, Form } from 'formik';
 import dayjs from 'dayjs';
 import DateSelector from "../Components/DateSelector";
 import { getExpenditures } from "../api/expenditures";
+import CreateIcon from '@mui/icons-material/Create';
 
 
 
@@ -51,7 +52,19 @@ function Expenditure() {
             }
       };
       
-
+      const ButtonStyling = {
+        alignSelf: 'start' , paddingX :2 , paddingY:1,
+        marginLeft:'5%',
+        border:'2px solid black',
+        justifyContent:'start',
+        color:theme.palette.text.primary,
+        alignItems:'start',
+        ':hover': {
+            backgroundColor: theme.palette.secondary.hoverButton,
+            color: theme.palette.secondary.main,
+            borderColor: theme.palette.secondary.main
+          },
+        }
 
 
   return (
@@ -85,6 +98,11 @@ function Expenditure() {
       )}
     </Formik>
         </Box>
+        <Button  sx={ButtonStyling}
+                onClick={() => navigate('/Create/Expenditure')}
+            >
+            Create Expenditure <CreateIcon sx={{ml:1}} />
+        </Button>
         {data && <DataTable data = { data }  nav = 'Expenditure/Details' isPayment = {false} />}
     </Box>
     )

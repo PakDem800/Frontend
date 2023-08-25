@@ -8,6 +8,9 @@ import {useMediaQuery} from "@mui/material";
 import dayjs from 'dayjs';
 import DateSelector from "../Components/DateSelector";
 import { getMonthlyReport } from "../api/Reports";
+import CreateIcon from '@mui/icons-material/Create';
+
+
 
 
 
@@ -80,6 +83,19 @@ function MonthlyReport() {
         const isScreenExtraSmall = useMediaQuery(theme.breakpoints.down('xs'));
 
 
+        const ButtonStyling = {
+          alignSelf: 'start' , paddingX :2 , paddingY:1,
+          marginLeft:'5%',
+          border:'2px solid black',
+          justifyContent:'start',
+          color:theme.palette.text.primary,
+          alignItems:'start',
+          ':hover': {
+              backgroundColor: theme.palette.secondary.hoverButton,
+              color: theme.palette.secondary.main,
+              borderColor: theme.palette.secondary.main
+            },}
+            
   return (
     <Box 
     sx={{
@@ -113,7 +129,12 @@ function MonthlyReport() {
       )}
         </Formik>
         </Box>
-        <DataTable data = { data }  nav = 'Expenditure/Details' isPayment = {true} />
+        <Button  sx={ButtonStyling}
+                onClick={() => navigate('/Create/MonthlyReport')}
+            >
+            Create Monthly Report <CreateIcon sx={{ml:1}} />
+        </Button>
+        {data && (<DataTable data = { data }  nav = 'Expenditure/Details' isPayment = {true} />)}
         {data && 
             <Box sx={{display:'flex' , flexDirection:'column'}}>
                 <Box sx={{

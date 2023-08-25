@@ -68,7 +68,7 @@ function CreateAgent() {
       validateOnChange: true,
       validateOnBlur: false,
       onSubmit: (values, action) => {
-        action.resetForm();
+         
       },
     });
 

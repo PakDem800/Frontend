@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Box ,Typography , Button } from "@mui/material";
 import { useTheme } from '@emotion/react';
 import { useNavigate } from "react-router-dom";
-import DataTable from "../Components/Table";
-import FileSelector from "../Components/fileselector";
+
+import MultipleFileSelector from "../Components/MultipleFileSelector";
 import { getApplicationFormRecord } from "../api/MainAppFrom";
 
 
@@ -15,24 +15,7 @@ function ApplicationFormRecord() {
     const theme = useTheme();
 
     const [data, setData] = useState(null);
-    const [selectedFile, setSelectedFile] = useState('');
-
-    const handleConfirm = (file) => {
-        setSelectedFile(file);
-    };
-
    
-
-  const handleConfirmButtonClick = async () => {
-    if (selectedFile) {
-        const response = await getApplicationFormRecord(selectedFile)
-        setData(response)
-    } else {
-      alert('Please select a file before confirming.');
-    }
-  };
-
-
 
   return (
     <Box 
@@ -42,7 +25,7 @@ function ApplicationFormRecord() {
         justifyContent:'center',
         flexDirection:'column',
         paddingTop: { lg: '4%', md: '6%', sm: '8%', xs: '6%' },
-        height : data ? 'auto' : 247
+        height : data ? 'auto' : '50%'
        
     }}>
         <Box sx={{
@@ -53,41 +36,21 @@ function ApplicationFormRecord() {
         
          }}
     >
-        <Typography variant="h4" sx={{ flexGrow: 1 , mb:'1%' }}>
-             Application Record Finder
+        <Typography variant="h4" sx={{ flexGrow: 1 ,mb:'1%' }}>
+             Application Record Multiple Files
         </Typography>
         </Box>
         <Box sx={{
         backgroundColor: theme.palette.secondary.background,
         justifyContent:'center',
         flexDirection:'row',
-        paddingTop:'4%' ,
-        
+        paddingTop:'2%'
          }}
     >
-            <FileSelector onConfirm={handleConfirm} />
-            <Button
-                sx = {{
-                    color: theme.palette.secondary.text,
-                    backgroundColor: theme.palette.secondary.main,
-                    fontWeight: 'bold',
-                    boxShadow: 10,
-                    my: 1,
-                    ':hover': {
-                        backgroundColor: theme.palette.secondary.hoverButton,
-                        color: theme.palette.secondary.main,
-                    },
-                    border: 1,
-                    borderRadius: 2,
-                    paddingLeft: 1,
-                    paddingRight: 1,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    borderColor: theme.palette.secondary.Button,
-                }}
-            onClick={handleConfirmButtonClick}>Get Record</Button>
+            <MultipleFileSelector  />
+            
         </Box>
-        <DataTable data = { data }  nav = 'Payments' isPayment = {true} />
+        {data && (<DataTable data = { data }  nav = 'Payments' isPayment = {true} />)}
     </Box>
     )
 }
