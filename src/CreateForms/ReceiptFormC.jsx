@@ -56,7 +56,9 @@ function CreateReceipt() {
     ModeOfPayment : "",
     ReceievedAmount : null,
     Agent : "",
-    Remarks : ""
+    Remarks : "",
+    Online_Method : null,
+    Method_ID : null
   } :
   {
     Date:  null,
@@ -69,7 +71,9 @@ function CreateReceipt() {
     ModeOfPayment : data.Mode_Of_Payment,
     ReceievedAmount : data.Received_Amount    ,
     Agent : data.Agent_ID,
-    Remarks : data.Remarks
+    Remarks : data.Remarks,
+    Online_Method : data.Online_Method,
+    Method_ID : data.Method_ID
     
   }
 
@@ -87,7 +91,7 @@ function CreateReceipt() {
       validateOnBlur: false,
       onSubmit: (values, action) => {
         console.log(values);
-        action.resetForm();
+         
       },
     });
 
@@ -192,8 +196,9 @@ function CreateReceipt() {
             null ,
             values.CommAmount,
             null ,
-            values.ReceiptType 
-                                                    )
+            values.ReceiptType ,
+            values.Online_Method,
+            values.Method_ID                        )
           
             if(submission) {
               alert('Receipt created')
@@ -328,7 +333,7 @@ function CreateReceipt() {
                 onBlur={handleBlur}
               >
                 <MenuItem value={"Cash"}>Cash</MenuItem>
-                <MenuItem value={"Installments"}>Installments</MenuItem>
+                <MenuItem value={"Online"}>Online</MenuItem>
                 <MenuItem value={"CA"}>CA</MenuItem>
                
               </Select>
@@ -336,6 +341,41 @@ function CreateReceipt() {
           {errors.ModeOfPayment && touched.ModeOfPayment ? (
               <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.ModeOfPayment}</p>
             ) : null}
+          </Grid>
+
+          <Grid item lg={3} md = {3} sm = {6} xs={12}>
+          <FormControl sx={{width: '100%' }}>
+              <InputLabel >Online Method</InputLabel>
+              <Select
+                id="outlined-multiline-flexible"
+                label="Online Method"
+                color='secondary'
+                name='Online_Method'
+                value={values.Online_Method}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              >
+                <MenuItem value={"Transaction ID"}>Transaction ID</MenuItem>
+                <MenuItem value={"Slip ID"}>Slip ID</MenuItem>
+                <MenuItem value={"Sequence ID "}>Sequence ID </MenuItem>
+                <MenuItem value={"Cross Cheque No"}>Cross Cheque No</MenuItem>
+                <MenuItem value={"Other ID"}>Other ID</MenuItem>
+               
+              </Select>
+          </FormControl>
+          
+          </Grid>
+
+          <Grid item lg={3} md={3} sm={6} xs={12}>
+              <TextField sx={{  width: '100%' }}
+                id="outlined-multiline-flexible"
+                label="ID"
+                color='secondary'
+                name='Method_ID'
+                value={values.Method_ID}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
           </Grid>
 
           <Grid item lg={3} md = {3} sm = {6} xs={12}>
@@ -356,7 +396,6 @@ function CreateReceipt() {
                 <MenuItem value={"Registry Fee"}>Registry Fee</MenuItem>
                 <MenuItem value={"Transfer Fee"}>Transfer Fee</MenuItem>
                 <MenuItem value={"Development Charges"}>Development Charges</MenuItem>
-                <MenuItem value={"Token Money"}>Token Money</MenuItem>
               </Select>
           </FormControl>
           </Grid>

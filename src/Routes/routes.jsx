@@ -50,6 +50,14 @@ import InvestorDetails from '../Pages/InvestorDetails';
 import TransferFiles from '../Pages/TransferFile';
 import CashFiles from '../Pages/CashFiles';
 import InstallmentFiles from '../Pages/InstallmentFiles';
+import RegistryInteqal from '../Pages/RegistryInteqal';
+import MainFormTracking from '../Components/MainFromTracking';
+import ReceiptTracking from '../Components/ReceiptTracking';
+import TokenMoney from '../Pages/TokenMoney';
+import TokenDetails from '../Pages/TokenDetails';
+import SignInCustomer from '../SignInCustomer';
+import CustomerHome from '../Screens/CustomerHome';
+import RefundDetails from '../Pages/RefundDetials';
 
 function Body() {
     const theme = useTheme();
@@ -66,8 +74,9 @@ function Body() {
                 <Route path="Home" element={ <Home /> } />
                 <Route path='MainAppForm' element = { <MainAppFrom />} />
                 <Route path='CashFiles' element={<CashFiles />}/>
+                <Route path='TokenMoney' element={<TokenMoney />} />
                 <Route path='InstallmentFiles' element= { <InstallmentFiles />} />
-                <Route path='ApplicationFormRecord' element = {<ApplicationFormRecord />} />
+                <Route path='MultipleFiles' element = {<ApplicationFormRecord />} />
                 <Route path='ReceiptFinder' element = {<ReceiptFinder />} />
                 <Route path='CashPayments' element = {<CashPayment />} />
                 <Route path='CAPayments' element= {<CAPayment />} />
@@ -91,10 +100,15 @@ function Body() {
                 <Route path='AgentCommission' element = {<AgentCommission />} />
                 <Route path='AgentWiseFile' element = {<AgentWiseFile />} />
                 <Route path='TransferFiles' element={<TransferFiles/>} />
+                <Route path='MainFormTracking' element={<MainFormTracking />}/>
+                <Route path='ReceiptTracking' element = { <ReceiptTracking />} />
+                <Route path='RegistryInteqal' element= {<RegistryInteqal />} />
+                
                 <Route path='RefundSchedule' element = {<RefundSchedule />} />
 
                 { /* Details */ }
                 <Route path='ReceiptDetails/:id' element = {<ReceiptDetails />} />
+                <Route path='TokenDetails/:id' element = {<TokenDetails />} />
                 <Route path='Plot/details/:id' element = {<PlotDetails />} />
                 <Route path='PlotPrice/details/:id' element = {<PlotPriceDetails />} />
                 <Route path='PlotAllotment/details/:id' element = {<PlotAllotmentDetails />} />
@@ -104,9 +118,12 @@ function Body() {
                 <Route path='Agent/details/:id' element = {<AgentDetails />} />
                 <Route path='Investor/details/:id' element = {<InvestorDetails />} />
                 <Route path='MainAppFormDetails/:id' element = {<MainAppFormDetails />} />
+                <Route path='RefundDetails/:id' element={<RefundDetails />} />
 
                 { /* Create */ }
                 <Route path='Create/*' element = {<Create />} />
+
+               
 
                 { /* Error Screen */}
                 <Route path='*' element = {<ErrorScreen />} />

@@ -39,7 +39,6 @@ export default function TransferCard({ data ,nav ,edit = true,  isExp }) {
   useEffect(() => {
     const userType = localStorage.getItem('type');
   
-    console.log(data)
     if (userType == null) {
       setisAdmin(false);
     } else if (userType == 1) {

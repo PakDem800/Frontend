@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import {Grid} from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -29,34 +29,27 @@ import InvestorSelector from '../Components/InvestorSeletorID';
 
 
 
-function RefundForm({ApplicationNo}) {
+function RefundForm( { ApplicationNo , Total_Paid_Amount}) {
 
   
   const theme = useTheme()
   const navigate = useNavigate()
 
-
-
-
-
-  
-
-
   const initialValues =  {
-    DeductedAmount : null,
     Remarks : null,
     ModeofPayment : null,
     Installment : null,
-    AmountForRefund : '',
+    CompanyPercentage : '',
     Date : null,
   } 
+
   
 
   const { values, handleBlur, handleChange, handleSubmit, errors, touched, setFieldValue } =
     useFormik({
       initialValues,
       validationSchema: Yup.object({
-        AmountForRefund: Yup.number().required("Refund Amount is required!")
+        CompanyPercentage: Yup.number().required("Company Percentage is required!")
       
         
       }),
@@ -64,7 +57,7 @@ function RefundForm({ApplicationNo}) {
       validateOnBlur: false,
       onSubmit: (values, action) => {
         console.log(values);
-        action.resetForm();
+         
       },
     });
 
@@ -74,14 +67,16 @@ function RefundForm({ApplicationNo}) {
   const handleClick = async () => {
   
       if (
-            values.AmountForRefund !== '' && !isNaN(values.AmountForRefund)
+            values.CompanyPercentage !== '' && !isNaN(values.CompanyPercentage)
         ) { 
+
+          const RefundAmount = Total_Paid_Amount * ((100 - values.CompanyPercentage) / 100)
        
        
             const submission =   createRefund(
                                                 ApplicationNo,
                                                 values.Date,
-                                                values.AmountForRefund,
+                                                RefundAmount,
                                                 values.Installment,
                                                 values.ModeofPayment,
                                                 values.Remarks
@@ -101,7 +96,7 @@ function RefundForm({ApplicationNo}) {
     }
       
       else{
-        alert("Amount For Refund should be valid")
+        alert("Company Percentage should be valid")
       }
   }
 
@@ -147,24 +142,12 @@ function RefundForm({ApplicationNo}) {
               </LocalizationProvider>
         </Grid>
 
-        <Grid item lg={4} md={4} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Deducted Amount"
-                color='secondary'
-                name='DeductedAmount'
-                value={values.DeductedAmount}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-             
-          </Grid>
 
 
           <Grid item lg={4} md={4} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
-                label="Installment"
+                label="No. of Months to Refund Amount"
                 color='secondary'
                 name='Installment'
                 value={values.Installment}
@@ -175,25 +158,25 @@ function RefundForm({ApplicationNo}) {
           </Grid>
           
 
-          <Grid item lg={4} md={4} sm={6} xs={12}>
+        <Grid item lg={4} md={4} sm={6} xs={12}>
           <TextField
             sx={{ width: '100%' }}
             id="outlined-multiline-flexible"
-            label="Amount For Refund"
+            label="Company Percentage"
             color="secondary"
-            name="AmountForRefund"
-            value={values.AmountForRefund}
+            name="CompanyPercentage"
+            value={values.CompanyPercentage}
             onChange={handleChange}
             onBlur={(e) => {
-              if (e.target.value !== '') setFieldValue('AmountForRefund', parseFloat(e.target.value));
-              else setFieldValue('AmountForRefund', '');
+              if (e.target.value !== '') setFieldValue('CompanyPercentage', parseFloat(e.target.value));
+              else setFieldValue('CompanyPercentage', '');
             }}
           />
-          {errors.AmountForRefund && touched.AmountForRefund ? (
+          {errors.CompanyPercentage && touched.CompanyPercentage ? (
             <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>
-            {errors.AmountForRefund === 'Amount For Refund should be a number'
-                ? 'Amount For Refund should be a number'
-                : 'AmountForRefund should be a number'}
+            {errors.CompanyPercentage === 'Company Percentage should be a number'
+                ? 'Company Percentage should be a number'
+                : 'Company Percentage should be a number'}
             </p>
         ) : null}
         </Grid>

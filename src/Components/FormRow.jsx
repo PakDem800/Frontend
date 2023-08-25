@@ -138,7 +138,7 @@ export function FormRow1() {
 
             <Button
                 sx={ButtonStyling}
-                onClick={() => navigate('/Create/MainRefund')}
+                onClick={() => navigate('/Create/Refund')}
 
             >
                 Create Main Refund
@@ -361,6 +361,16 @@ export function FormRow1() {
             >
                 Month Wise Report
                 <VisibilityIcon
+                    sx ={{ marginLeft:1}}
+                />
+            </Button>
+            <Button
+                sx={ButtonStyling}
+                onClick={() => navigate('/MonthlyReport')}
+
+            >
+                Create Monthly Report
+                <CreateIcon
                     sx ={{ marginLeft:1}}
                 />
             </Button>

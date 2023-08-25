@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Box ,Typography } from "@mui/material";
+import { Box, Button , Typography} from "@mui/material";
+import CreateIcon from '@mui/icons-material/Create';
 import { useTheme } from '@emotion/react';
 import { useNavigate } from "react-router-dom";
 import DataTable from "../Components/Table";
@@ -29,6 +30,19 @@ function PlotCancellation() {
     fetchData(); 
   }, []);
 
+  const ButtonStyling = {
+    alignSelf: 'start' , paddingX :2 , paddingY:1,
+    marginLeft:'5%',
+    border:'2px solid black',
+    justifyContent:'start',
+    color:theme.palette.text.primary,
+    alignItems:'start',
+    ':hover': {
+        backgroundColor: theme.palette.secondary.hoverButton,
+        color: theme.palette.secondary.main,
+        borderColor: theme.palette.secondary.main
+      },
+    }
 
   return (
     <Box 
@@ -52,6 +66,11 @@ function PlotCancellation() {
              Plot Cancellation Letter
         </Typography>
         </Box>
+        <Button  sx={ButtonStyling}
+                onClick={() => navigate('/Create/CancellationLetter')}
+            >
+            Create Cancellation <CreateIcon sx={{ml:1}} />
+        </Button>
         <DataTable data = { data }  nav = 'PlotCancellation/details' isPayment = {false} />
     </Box>
     )

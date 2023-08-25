@@ -5,7 +5,7 @@ import {Button} from '@mui/material';
 import { useTheme } from '@emotion/react';
 import { useNavigate , useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { getTransferFile } from '../api/Transfer';
+import { getrefundFile } from '../api/Transfer';
 import TransferCard from '../Components/TransferCard';
 import FileSelector from '../Components/fileselector';
 import RefundForm from './refundForm';
@@ -23,25 +23,21 @@ function CreateRefund () {
     const getdetails = async (file) => {
         try {
             
-            const responseData = await getTransferFile(file); 
+            const responseData = await getrefundFile(file); 
 
             const FileDetails = {
-              Application_No : responseData.ApplicationNo,
               Applicant_Name: responseData.ApplicantName,
               Father_Or_Husband: responseData.FatherOrHusband,
               CNIC_No: responseData.CNICNo,
               Contact_No: responseData.ContactNo,
-              Nok : responseData.Nok,
-              NoK_Father_Name : responseData.NoKFatherName,
               File_No: responseData.FileNo,
-              File_Type: responseData.FileType,
               Plot_Size: responseData.Area,
               Plot_No: responseData.PlotNo,
-              Phase: responseData.Phase,
-              Block: responseData.Block,
+              Total_Amount : responseData.TotalAmount,
               Total_Installment: responseData.Total_Installment,
               Down_Payment: responseData.DownPayment,
-              Monthly_Installment : responseData.MonthlyInstallment
+              Monthly_Installment : responseData.MonthlyInstallment,
+              Total_Paid_Amount : responseData.Total_Paid_Amount
 
 
             }
@@ -83,7 +79,7 @@ function CreateRefund () {
             data &&
             (<>
               <TransferCard data={data} edit={true} isExp={true}  />
-              <RefundForm ApplicationNo = {data.File_No} />
+              <RefundForm ApplicationNo = {data.File_No} Total_Paid_Amount = {data.Total_Paid_Amount} />
             </>)
             }
         </Box>

@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import LockPersonIcon from '@mui/icons-material/LockPerson';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -41,6 +42,7 @@ export default function SignInSide() {
             backgroundRepeat: 'no-repeat',
             backgroundSize:'cover',
             minHeight: '100vh',
+            maxHeight : 'auto'
         }}
     >
         <Typography  variant="h4" sx = {{
@@ -66,7 +68,7 @@ export default function SignInSide() {
                     >
             <Box
                 sx={{
-                my: 5,
+                my: 2,
                 mx: 4,
                 display: 'flex',
                 flexDirection: 'column',
@@ -118,6 +120,20 @@ export default function SignInSide() {
                         -OR- 
                     </Typography>
                 </Box>
+                <Button
+                    variant="outlined" color='primary'
+                    sx={{ 
+                        padding: '1% 5%',
+                        fontSize:'15px'
+                        ,mb:2
+                    }}
+                    onClick={() => navigate('/SignInCustomer')}
+                >
+                    <LockPersonIcon sx={{marginRight:2}}/>
+                    Sign In as Customer
+                
+                </Button>
+                
                 <Button variant="outlined" color='primary' >
                      <img src={GoogleImage} height={25} style={{ marginRight: 15 }} />
                      Sign in with Google

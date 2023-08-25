@@ -24,7 +24,9 @@ export const createReceipt = async(UserID,
                                     AgentName = null,
                                     CommAmount = null,
                                     CommRemarks = null,
-                                    ReceiptType 
+                                    ReceiptType ,
+                                    Online_Method = null,
+                                    Method_ID = null
                                     ) => {
 
      try {
@@ -54,7 +56,9 @@ export const createReceipt = async(UserID,
                                     AgentName ,
                                     CommAmount,
                                     CommRemarks ,
-                                    ReceiptType 
+                                    ReceiptType ,
+                                    Online_Method,
+                                    Method_ID
                                            });
         return true; 
                                          } catch (error) {

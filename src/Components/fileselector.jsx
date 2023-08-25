@@ -32,7 +32,7 @@ export default function FileSelector({ onConfirm }) {
       try {
         const responseData = await getMainAppFormDetails();
          
-        setFileNos(responseData.map(item => item.FileNo));
+        setFileNos(responseData.map(item => item.File_No));
         console.log(fileNos)
       } catch (error) {
         // Handle error if needed
@@ -46,7 +46,7 @@ export default function FileSelector({ onConfirm }) {
       target: { value },
     } = event;
     setFile(value);
-    onConfirm(value); // Call the onConfirm function when a file is selected
+    onConfirm(value); 
   };
 
   // Render the VirtualizedList

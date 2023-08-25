@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import { FormRow1 , FormRow2 } from '../Components/FormRow';
 import { CoPresentOutlined } from '@mui/icons-material';
+import BasicModal from '../Components/Modal';
+
 
 
 
@@ -13,6 +15,7 @@ import { CoPresentOutlined } from '@mui/icons-material';
 export default  function Home() {
 
     const [user,setUser] = useState('');
+    const [open, setOpen] = useState(false);
     const [noUser,setNoUser] = useState(null)
     const navigate = useNavigate()
     const theme = useTheme();
@@ -76,19 +79,30 @@ export default  function Home() {
        
     }} >
        <Box>
-            <Box sx={{ 
-                display: 'inline-block', textAlign: 'center', 
-                marginTop: 2, padding: '2%' ,
-                marginBottom : 1,
-                }}>
-                    <Typography variant='h4' sx={{ fontSize: '2rem' }}>
-                    {user} Portal
-                    </Typography>
-                    <Divider
-                    sx={{ height: 5, backgroundColor: theme.palette.primary.main }}
-                    />
+        {/* Centered Typography */}
+        <Box sx={{
+            display: 'inline-block', textAlign: 'center',
+            marginTop: 2, padding: '2%', 
+        }}>
+            <Typography variant='h4' sx={{ fontSize: '2rem' }}>
+                {user} Portal
+            </Typography>
+            <Divider
+                sx={{ height: 5, backgroundColor: theme.palette.primary.main }}
+            />
+        </Box>
+       
+        {user === "Admin" && (
+            <Box sx={{
+                display: 'flex', justifyContent: 'flex-end',
+                mr:'3%',
+                mb:{ lg : '1%' , md : '2%' , sm : '3%' , xs: "4%"},
+                mt:{sm:'1%' , xs:'1%'}
+            }}>
+                <BasicModal />
             </Box>
-       </Box>
+        )}
+    </Box>
        {noUser ? 
         (<Box>
             <Box sx={{ display: 'inline-block', textAlign: 'center', marginTop: 2, padding: '2%', marginBottom : 1, }}>
@@ -117,7 +131,7 @@ export default  function Home() {
                         <FormRow2 />
                     )} 
                 </Grid>
-                  
+               
             </Grid>
         </Box>)}
 
