@@ -1,36 +1,46 @@
-import React from 'react';
-import { Formik, Form } from 'formik';
-import OtherFile from './Fake';
+import * as React from 'react';
+import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 
-export const ParentComponent = () => {
-  const initialValues = {
-    starting: null,
-    ending: null,
+function CustomToolbar() {
+  return (
+    <GridToolbarContainer>
+      <GridToolbarExport printOptions={{ disableToolbarButton: true }} />
+    </GridToolbarContainer>
+  );
+}
+
+export default function FakeTable({ data}) {
+
+  const formatHeader = (key) => {
+    const words = key.split('_');
+    const formattedWords = words.map(
+      (word) => word.charAt(0).toUpperCase() + word.slice(1)
+    );
+    return formattedWords.join(' ');
   };
 
-  const handleSubmit = (values) => {
-    const { starting, ending } = values;
-    const startingDate = starting.toISOString().split('T')[0];
-    const endingDate = ending.toISOString().split('T')[0];
+  
+  const keys = Object.keys(data[0]);
 
-    if (endingDate < startingDate) {
-      alert('Ending date should be greater than or equal to the starting date.');
-    } else {
-      console.log('Starting Date:', startingDate);
-      console.log('Ending Date:', endingDate);
-    }
-  };
+  const columns = [
+    ...keys.slice(1).map((key) => ({
+      field: key,
+      headerName: formatHeader(key),
+      suppressSizeToFit: true,
+      flex: 1,
+      headerClassName: 'super-app-theme--header',
+    }))
+  ].filter(Boolean);
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      {({ values, setFieldValue, handleBlur, errors, touched }) => (
-        <Form>
-          <OtherFile values={values} setFieldValue={setFieldValue} handleBlur={handleBlur} errors={errors} touched={touched} />
-          <button type="submit">Submit</button>
-        </Form>
-      )}
-    </Formik>
+    <div style={{ height: 300, width: '100%' }}>
+      <DataGrid
+        rows={data} // Assuming your data is an array of rows
+        columns={columns} // Pass your column configuration here
+        components={{
+          Toolbar: CustomToolbar,
+        }}
+      />
+    </div>
   );
-};
-
-export default ParentComponent;
+}

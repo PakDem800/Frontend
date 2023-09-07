@@ -7,7 +7,7 @@ function Copyright () {
       <Typography variant="body2" color="text.secondary" align="center" >
         {'Copyright © '}
         <Link color="inherit" href="#">
-          PAK DEM (SMC) Pvt. Ltd
+          PAK DEM Developers Portal
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}

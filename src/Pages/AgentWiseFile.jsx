@@ -57,7 +57,7 @@ function AgentWiseFile() {
          }}
     >
         <Typography variant="h4" sx={{ flexGrow: 1 , mb:'1%' }}>
-             Agent Commission
+             Agent Wise File Details
         </Typography>
         </Box>
         <Box sx={{

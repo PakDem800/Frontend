@@ -12,13 +12,11 @@ import CashPayment from '../Pages/CashPayments';
 import CAPayment from '../Pages/CAPayment';
 import OnlinePayment from '../Pages/OnlinePayment';
 import FileSelector from '../Components/fileselector';
-import OtherFile from '../Components/Fake';
 import PaymentSchedule from '../Pages/PaymentSchedule';
 import RegularReceipt from '../Pages/RegularReceipt';
 import TransferReceipt from '../Pages/TransferReceipt';
 import DevelopmentReceipt from '../Pages/DevelopmentReceipt';
-import ReceiptDetails from '../Pages/ReceiptDetails';
-import { ParentComponent } from '../Components/Fake2';
+import ReceiptDetails from '../Pages/ReceiptDetails'
 import Expenditure from '../Pages/Expenditure';
 import ExpenditureDetails from '../Pages/ExpenditureDetails';
 import MonthlyReport from '../Pages/MonthlyReport';
@@ -58,6 +56,8 @@ import TokenDetails from '../Pages/TokenDetails';
 import SignInCustomer from '../SignInCustomer';
 import CustomerHome from '../Screens/CustomerHome';
 import RefundDetails from '../Pages/RefundDetials';
+import PrintMainAppForm from '../Pages/Print/PrintMainForm';
+import PrintRecipt from '../Pages/Print/PrintRecipt';
 
 function Body() {
     const theme = useTheme();
@@ -103,6 +103,10 @@ function Body() {
                 <Route path='MainFormTracking' element={<MainFormTracking />}/>
                 <Route path='ReceiptTracking' element = { <ReceiptTracking />} />
                 <Route path='RegistryInteqal' element= {<RegistryInteqal />} />
+
+                {/* Print  */}
+                <Route path='PrintMainForm' element={<PrintMainAppForm />} />
+                <Route path='PrintRecipt' element={<PrintRecipt />} />
                 
                 <Route path='RefundSchedule' element = {<RefundSchedule />} />
 

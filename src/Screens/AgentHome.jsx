@@ -14,14 +14,14 @@ import Footer from '../Components/Footer';
 
 
 
-export default  function CustomerHome() {
+export default  function AgentHome() {
     const theme = useTheme();
     const navigate = useNavigate();
     const [islogged , setislogged] = useState(null)
 
     useEffect(() => {
-        const CNICNo = localStorage.getItem("CNICNo")
-        if(!CNICNo){
+        const LoggedIn = localStorage.getItem("LoggedIn")
+        if(!LoggedIn){
             alert('Please Login First')
             navigate('/')
             setislogged(false)
@@ -69,22 +69,23 @@ export default  function CustomerHome() {
       }));
 
     const handleLogOut = () => {
-        localStorage.removeItem("CNICNo");
-        navigate('/SignInCustomer')
+        localStorage.removeItem("LoggedIn");
+        localStorage.removeItem("Name")
+        navigate('/')
     }
 
     return(
         <Box sx ={{
             
-            backgroundColor : theme.palette.secondary.background
+            backgroundColor : theme.palette.secondary.background,
+            minHeight : islogged ? "100vh" : 'auto',
         }}>
-            {islogged && 
-            (<>
+            {islogged && (<>
             <Box sx={{
                 display: 'inline-block', textAlign: 'center', padding: '2%' 
             }}>
                 <Typography variant='h4' sx={{ fontSize: '2rem' }}>
-                    Customer Portal
+                    Agent Portal
                 </Typography>
                 <Divider
                     sx={{ height: 5, backgroundColor: theme.palette.primary.main }}
@@ -123,9 +124,9 @@ export default  function CustomerHome() {
                         </Typography>
                         <Button
                             sx={ButtonStyling}
-                            onClick={() => navigate('/CustomerFormDetails')}
+                            onClick={() => navigate('/AgentFiles')}
                         >
-                            View My File
+                            View My Files
                             <VisibilityIcon
                                 sx ={{ marginLeft:1}}
                             />
@@ -133,11 +134,11 @@ export default  function CustomerHome() {
 
                         <Button
                             sx={ButtonStyling}
-                            onClick={() => navigate('/CustomerReceipt')}
+                            onClick={() => navigate('/AgentCommissionPage')}
 
                         >
                             
-                            View My Reciepts
+                            View My Commission
                             <VisibilityIcon  sx={{marginLeft:1}}  />
                             
                         </Button>
@@ -149,6 +150,7 @@ export default  function CustomerHome() {
             </Grid>
             <Footer />
             </>)}
+            
         </Box>
     )
 

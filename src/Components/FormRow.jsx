@@ -129,7 +129,7 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
-                onClick={() => navigate('/Create/RegistyInteqal')}
+                onClick={() => navigate('/Create/RegistryInteqal')}
 
             >
                 Create Inteqal/Registry

@@ -11,12 +11,14 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Copyright from './Components/Copyright';
-import { loginUser } from './api/Login';
+import { loginAgent, loginUser } from './api/Login';
 import { useTheme } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import GoogleIcon from '@mui/icons-material/Google';
 import GoogleImage from './assets/google.png'
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from '@react-oauth/google';
+
 
 
 export default function SignInSide() {
@@ -35,6 +37,15 @@ export default function SignInSide() {
         }
     };
 
+    const AuthAgent = async (token) => {
+        const res = await loginAgent(token)
+        if(res){
+            navigate('/AgentHome')
+        }
+       
+
+    }
+
   return (
     <Box 
         sx={{
@@ -51,7 +62,7 @@ export default function SignInSide() {
                  fontFamily:'sans-serif',
                  fontWeight : 'Bold'
                  }}>
-                Welcome to PAK DEM (SMC) Pvt. Ltd
+                Welcome to PAK DEM Developers Portal
         </Typography>
         <Grid container component="main" 
             sx={{ flexGrow: 1, 
@@ -106,7 +117,7 @@ export default function SignInSide() {
                     type="submit"          
                     variant="contained"
                     sx={{ 
-                        mt: 2, mb: 2  , 
+                        mt: 2, mb: 1  , 
                         color : 'white' ,
                         backgroundColor: theme.palette.primary.main ,
                         padding: '2% 10%',
@@ -115,17 +126,18 @@ export default function SignInSide() {
                 >
                     Sign In
                 </Button>
-                <Box sx ={{ mb:2}}>
+                <Box sx ={{ mb:1}}>
                     <Typography variant='p'>
                         -OR- 
                     </Typography>
                 </Box>
                 <Button
-                    variant="outlined" color='primary'
+                    variant="outlined" 
                     sx={{ 
                         padding: '1% 5%',
                         fontSize:'15px'
-                        ,mb:2
+                        ,mb:2,
+                        color: theme.palette.text.primary
                     }}
                     onClick={() => navigate('/SignInCustomer')}
                 >
@@ -133,11 +145,26 @@ export default function SignInSide() {
                     Sign In as Customer
                 
                 </Button>
+                <Button        
+                    variant="text" 
+                >
+
+                <GoogleLogin
+
+                    onSuccess={(res)=>{
+                        AuthAgent(res.credential)
+                    }}  
+
+                    onFailure={()=>{
+                        alert('Unauthorized User')
+                    }}
                 
-                <Button variant="outlined" color='primary' >
-                     <img src={GoogleImage} height={25} style={{ marginRight: 15 }} />
-                     Sign in with Google
+                    onError={() => {
+                    console.log('Login Failed');
+                    }}
+                />
                 </Button>
+               
             </Box>
           </Box>
             </Grid>
