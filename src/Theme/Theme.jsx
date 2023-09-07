@@ -24,7 +24,8 @@ const theme = createTheme({
       active:'#0E9494',
       inactive: '#F7CA18',
       cancelled : '#ff0000'
-    }
+    },
+    
   }
  })
 

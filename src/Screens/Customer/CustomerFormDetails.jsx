@@ -17,6 +17,7 @@ function CustomerFormDetails () {
     const theme = useTheme();
   
     const [data , setData] = useState(null);
+    const [islogged , setislogged] = useState(null)
 
 
 
@@ -34,10 +35,12 @@ function CustomerFormDetails () {
         };
         const CNICNo =  localStorage.getItem("CNICNo")
         if(!CNICNo){
+            setislogged(false)
             alert('Please Login First')
             navigate('/')
         }
         else{
+          setislogged(true)
             fetchData(CNICNo); 
         }
         
@@ -60,14 +63,14 @@ function CustomerFormDetails () {
         <Box
           sx={{
             display: 'flex',
-            backgroundColor: theme.palette.secondary.background,
+            backgroundColor: islogged ? theme.palette.secondary.background : 'white',
             justifyContent: 'center',
             flexDirection: 'column',
             paddingTop: { lg: '4%', md: '6%', sm: '15%', xs: '8%' },
             
           }}
         >
-            <Box sx={{
+           {islogged && ( <><Box sx={{
                     display:'flex',
                     justifyContent:"flex-start",
                     color: theme.palette.primary.main,
@@ -128,6 +131,7 @@ function CustomerFormDetails () {
             
           </Box>
           <GetCard data={data} nav='Main' isExp={false} />
+          </>)}
         </Box>
       );
             }

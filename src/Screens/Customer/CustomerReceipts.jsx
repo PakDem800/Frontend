@@ -15,7 +15,10 @@ function CustomerReceipt() {
     const navigate = useNavigate()
     const theme = useTheme();
 
+   
+
   const [data, setData] = useState(null);
+  const [islogged , setislogged] = useState(null)
 
   useEffect(() => {
   
@@ -31,10 +34,12 @@ function CustomerReceipt() {
 
     const CNICNo =  localStorage.getItem("CNICNo")
         if(!CNICNo){
+          setislogged(false)
             alert('Please Login First')
             navigate('/')
         }
         else{
+          setislogged(true)
             fetchData(CNICNo); 
         }
   }, []);
@@ -44,37 +49,41 @@ function CustomerReceipt() {
         <Box 
     sx={{
         display: 'flex',
-        backgroundColor: theme.palette.secondary.background,
+        backgroundColor: islogged ? theme.palette.secondary.background : 'white',
         justifyContent:'center',
         flexDirection:'column',
         paddingTop: { lg: '4%', md: '6%', sm: '8%', xs: '6%' }, 
         minHeight: data ? 'auto' :  '50vh'
        
     }}>
-         <Box sx={{
-                    display:'flex',
-                    justifyContent:"flex-start",
-                    color: theme.palette.primary.main,
-                    ml:'5%',
-                }}>
-                    <ArrowBackIosIcon onClick = {()=> navigate('/CustomerHome')} />
-        </Box>
-      <Box sx={{
-        backgroundColor: theme.palette.secondary.background,
-        justifyContent:'center',
-        flexDirection:'row',
-        mx:'auto'
-        
-         }}
-    >
-       
-        <Typography variant="h4" sx={{ flexGrow: 1 , mb:'1%' }}>
-            Customer Receipt
-        </Typography>
-        </Box>
-        <DataTable data = { data }  nav = 'ReceiptDetails'  isPayment = {true} />
+        {islogged && ( 
+          <>
+            <Box sx={{
+                        display:'flex',
+                        justifyContent:"flex-start",
+                        color: theme.palette.primary.main,
+                        ml:'5%',
+                    }}>
+                        <ArrowBackIosIcon onClick = {()=> navigate('/CustomerHome')} />
+            </Box>
+            <Box sx={{
+              backgroundColor: theme.palette.secondary.background,
+              justifyContent:'center',
+              flexDirection:'row',
+              mx:'auto'
+              
+              }}
+          >
+            
+              <Typography variant="h4" sx={{ flexGrow: 1 , mb:'1%' }}>
+                  Customer Receipt
+              </Typography>
+              </Box>
+            <DataTable data = { data }  nav = 'ReceiptDetails'  isPayment = {true} />
+            <Footer />
+          </>
+        ) }
     </Box>
-    <Footer />
     </Box>
     )
 }

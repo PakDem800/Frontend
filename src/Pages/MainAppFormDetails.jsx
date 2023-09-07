@@ -7,6 +7,7 @@ import { useNavigate , useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { getSingleDetails } from '../api/MainAppFrom';
 import GetCard from '../Components/Card';
+import PrintIcon from '@mui/icons-material/Print';
 
 function MainAppFormDetails () {
 
@@ -46,7 +47,7 @@ function MainAppFormDetails () {
 
     const reason = data?.reason
 
-    const bg = status === 'active'
+    const bg = status === 'active' || 'Cleared'
     ? theme.palette.status.active
     : status === 'inactive'
     ? theme.palette.status.inactive
@@ -87,6 +88,9 @@ function MainAppFormDetails () {
             sx={{ 
               backgroundColor : bg,
               color:theme.palette.primary.background,
+              border : 1,
+              borderColor : bg,
+              borderRadius:3,
               width:{ md: '22%', sm:'25%' , xs:'90%' }
                          }}>
                 <span 
@@ -113,6 +117,11 @@ function MainAppFormDetails () {
             <Typography variant="p" sx={{ flexGrow: 1 }} />
 
             </Box>
+            {data && <Box sx= {{display:'flex' , justifyContent: "flex-end" , mr:"6%"}}>
+              <Button onClick={() => navigate('/PrintMainForm' , { state: { data: data } })} variant='contained' >
+                    Print <PrintIcon sx={{ml:1}} />
+              </Button>
+            </Box>}
             
           </Box>
           <GetCard data={data} nav='Main' isExp={false} />

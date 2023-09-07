@@ -5,7 +5,7 @@ const Axios = axios.create({
   headers: { 'Content-Type': 'application/json' }
 });
 
-// Add a request interceptor to attach the authorization header
+
 Axios.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -19,13 +19,11 @@ Axios.interceptors.request.use(
   }
 );
 
-// Add a response interceptor to handle the token returned after login
 Axios.interceptors.response.use(
   (response) => {
     const token = response.data.token;
     if (token) {
       localStorage.setItem("token", token);
-      // Now the token will be included in the headers of subsequent requests automatically
     }
     return response;
   },

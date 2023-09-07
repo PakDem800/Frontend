@@ -9,6 +9,9 @@ import SignInCustomer from './SignInCustomer'
 import CustomerHome from './Screens/CustomerHome'
 import CustomerFormDetails from './Screens/Customer/CustomerFormDetails'
 import CustomerReceipt from './Screens/Customer/CustomerReceipts'
+import AgentHome from './Screens/AgentHome'
+import AgentCommissionPage from './Screens/Agent/AgentCommissionP'
+import AgentFiles from './Screens/Agent/AgentFile'
 
 function App() {
 
@@ -23,6 +26,11 @@ function App() {
         <Route path="CustomerHome" element={<CustomerHome />} />
         <Route path='CustomerFormDetails' element={<CustomerFormDetails />} />
         <Route path='CustomerReceipt' element={<CustomerReceipt />}/>
+
+        {/* Agent */}
+        <Route path='AgentHome' element={<AgentHome />} />
+        <Route path='AgentFiles' element={<AgentFiles />}/>
+        <Route path='AgentCommissionPage' element={<AgentCommissionPage/>} />
 
         <Route path="/*" element={ <Body /> } />
     </Routes>

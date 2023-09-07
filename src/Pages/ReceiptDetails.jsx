@@ -7,6 +7,7 @@ import { useNavigate , useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { getSingleReceipt } from '../api/Receipt';
 import GetCard from '../Components/Card';
+import PrintIcon from '@mui/icons-material/Print';
 
 function ReceiptDetails () {
 
@@ -34,10 +35,7 @@ function ReceiptDetails () {
       
 
     
-    const status = data?.status
-
-    const reason = data?.reason
-
+  
 
 
     return (
@@ -62,9 +60,14 @@ function ReceiptDetails () {
             <Typography variant="h4" sx={{ flexGrow: 1 , mb:'1%' }}>
               Receipt Details
             </Typography>
-
+            {data && <Box sx= {{display:'flex' , justifyContent: "flex-end" , mr:"6%"}}>
+              <Button onClick={() => navigate('/PrintRecipt', { state: { id: data.Id } } )} variant='contained' >
+                    Print <PrintIcon sx={{ml:1}} />
+              </Button>
+            </Box>}
             
           </Box>
+          
           <GetCard data={data} nav='Receipt' isExp={true} />
         </Box>
       );

@@ -4,7 +4,6 @@ import MainAppFrom from '../Pages/MainAppForm';
 import { Routes, Route } from "react-router-dom";
 import ErrorScreen from '../Components/Error';
 import CreateMainAppForm from '../CreateForms/MainAppFormC';
-import Fake from '../Pages/Fake';
 import CreateReceipt from '../CreateForms/ReceiptFormC';
 import CreateVoucher from '../CreateForms/VoucherC';
 import CreatePlot from '../CreateForms/PlotC';
@@ -46,7 +45,6 @@ function Create() {
                 <Route path='MonthlyReport' element={<CreateMonthlyReport />} />
                 <Route path='TokenMoney' element={<CreateTokenMoney />} />
                 <Route path='CancellationLetter' element = {<CreateCancellationLetter/>} />
-                <Route path='Testing' element = {<Fake />} />
 
 
                 { /* Error Screen */}
