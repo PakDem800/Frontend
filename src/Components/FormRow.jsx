@@ -266,7 +266,7 @@ export function FormRow1() {
   }
 
 
-  export function FormRow2() {
+export function FormRow2() {
 
     const[isAdmin,setIsAdmin] = useState(null)
     const theme = useTheme();
@@ -456,7 +456,7 @@ export function FormRow1() {
             </Button>
             <Button
                 sx={ButtonStyling}
-                onClick={() => navigate('/Create/PlotTransfer')}
+                onClick={() => navigate('/Create/Transfer')}
 
             >
                 
@@ -530,3 +530,4 @@ export function FormRow1() {
       </>
     );
   }
+
