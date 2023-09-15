@@ -17,7 +17,7 @@ Open command prompt on your pc and then:
 
 1. **Clone the Repository**
    ```
-   git clone [<repository-url>](https://github.com/PakDem800/Frontend.git)
+   git clone https://github.com/PakDem800/Frontend.git
    ```
 
 2. **Install Dependencies**
