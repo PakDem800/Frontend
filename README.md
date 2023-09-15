@@ -13,15 +13,17 @@ Welcome to the PAK DEM DEVELOPERS frontend application! This React Material UI-b
 ## Getting Started
 Follow these steps to get the MMBC Society Plots frontend application up and running on your local environment:
 
+Open command prompt on your pc and then:
+
 1. **Clone the Repository**
    ```
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/PakDem800/Frontend.git)
    ```
 
 2. **Install Dependencies**
    ```
-   cd 
-   npm install
+   cd Frontend
+   npm i
    ```
 
 3. **Configuration**
@@ -29,10 +31,10 @@ Follow these steps to get the MMBC Society Plots frontend application up and run
 
 4. **Start the Development Server**
    ```
-   npm start
+   npm run dev
    ```
 
-5. Access the application in your web browser at `http://localhost:3000`.
+5. Access the application in your web browser at `http://localhost:3000` or `http://127.0.0.1:3000/`.
 
 
 
