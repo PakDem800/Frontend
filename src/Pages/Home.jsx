@@ -91,17 +91,70 @@ export default  function Home() {
                 sx={{ height: 5, backgroundColor: theme.palette.primary.main }}
             />
         </Box>
+        
        
-        {user === "Admin" && (
+        
             <Box sx={{
-                display: 'flex', justifyContent: 'flex-end',
-                mr:'3%',
+                display: 'flex', justifyContent: 'space-around',
                 mb:{ lg : '1%' , md : '2%' , sm : '3%' , xs: "4%"},
                 mt:{sm:'1%' , xs:'1%'}
             }}>
-                <BasicModal />
-            </Box>
+                <Button
+                    sx={{
+                        color: theme.palette.secondary.text,
+                        backgroundColor: theme.palette.secondary.main,
+                        fontWeight: 'bold',
+                        alignSelf: 'center',
+                        boxShadow: 10,
+                        my: 1,
+                        ':hover': {
+                            backgroundColor: theme.palette.secondary.hoverButton,
+                            color: theme.palette.secondary.main,
+                        },
+                        border: 1,
+                        borderRadius: 3,
+                        paddingLeft: 1,
+                        paddingRight: 1,
+                        paddingTop: 1,
+                        paddingBottom: 1,
+                        borderColor: theme.palette.secondary.Button,
+                        paddingX:8
+                    }}
+                    onClick={() => {navigate('/Folder')}}
+                    
+                >
+                    File Folder
+                </Button>
+                <Button
+                    sx={{
+                        color: theme.palette.secondary.text,
+                        backgroundColor: theme.palette.secondary.main,
+                        fontWeight: 'bold',
+                        alignSelf: 'center',
+                        boxShadow: 10,
+                        my: 1,
+                        ':hover': {
+                            backgroundColor: theme.palette.secondary.hoverButton,
+                            color: theme.palette.secondary.main,
+                        },
+                        border: 1,
+                        borderRadius: 3,
+                        paddingLeft: 1,
+                        paddingRight: 1,
+                        paddingTop: 1,
+                        paddingBottom: 1,
+                        borderColor: theme.palette.secondary.Button,
+                        paddingX:8
+                    }}
+                    onClick={() => {navigate('/UploadImage')}}
+                    
+                >
+                    Upload Image
+                </Button>
+        {user === "Admin" && (   <BasicModal />
         )}
+            </Box>
+        
     </Box>
        {noUser ? 
         (<Box>

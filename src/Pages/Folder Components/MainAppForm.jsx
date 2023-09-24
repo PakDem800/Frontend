@@ -5,11 +5,10 @@ import {Button} from '@mui/material';
 import { useTheme } from '@emotion/react';
 import { useNavigate , useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { getSingleDetails } from '../api/MainAppFrom';
-import GetCard from '../Components/Card';
+import GetCard from '../../Components/Card';
 import PrintIcon from '@mui/icons-material/Print';
 
-function MainAppFormDetails () {
+function MainForm (applicationData) {
 
 
     const navigate = useNavigate()
@@ -17,32 +16,16 @@ function MainAppFormDetails () {
     
     const location = useLocation();
 
-    const id = location.pathname?.split('/').pop();
-    const applicationData = useLocation.state?.applicationData
     const [data , setData] = useState(null);
 
+    useEffect(()=>{
+        setData(applicationData)
+    },[applicationData])
+
 
 
     
 
-    useEffect(() => {
-
-    
-       
-        const fetchData = async () => {
-          try {
-            
-            const responseData = await getSingleDetails(id); // Call the function to get the data
-            setData(responseData); // Set the data in the state
-          } catch (error) {
-            // Handle error if needed
-          }
-        };
-    
-        if(id){
-        fetchData(); 
-        }
-      }, []);
       
 
     
@@ -76,9 +59,7 @@ function MainAppFormDetails () {
               padding:'1%'
             }}
           >
-            <Typography variant="h4" sx={{ flexGrow: 1 , mb:'1%' }}>
-              Main App Form Details
-            </Typography>
+
             <Box sx = {{
                     display:'flex',
                     flexDirection:'row',
@@ -132,4 +113,4 @@ function MainAppFormDetails () {
       );
             }
 
-export default MainAppFormDetails;
+export default MainForm;

@@ -29,11 +29,19 @@ export default function SignInCustomer() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-
-        //login user here with the form values
-        const result = await LoginCustomer(data.get('CNIC'))
-        if(result){
-                navigate('/CustomerHome')
+        if(data.get('CNIC') === '' || data.get('FileNo') === '' ) {
+            if(data.get('CNIC') === '')
+                alert('Please Enter CNIC')
+            else if(data.get('FileNo') === ''){
+                alert('Please Enter File Number')
+            }
+        }
+        else
+        {
+            const result = await LoginCustomer(data.get('CNIC') , data.get('FileNo'))
+            if(result){
+                    navigate('/CustomerHome')
+            }
         }
     };
 
@@ -49,7 +57,7 @@ export default function SignInCustomer() {
     >
         <Typography  variant="h4" sx = {{
                 color : 'black' ,
-                 padding:'1.5%' ,
+                 padding:'1%' ,
                  fontFamily:'sans-serif',
                  fontWeight : 'Bold'
                  }}>
@@ -57,7 +65,7 @@ export default function SignInCustomer() {
         </Typography>
         <Typography  variant="h4" sx = {{
                 color : 'black' ,
-                 padding:'1.5%' ,
+                 padding:'0.5%' ,
                  fontFamily:'sans-serif',
                  fontWeight : 'Bold'
                  }}>
@@ -112,6 +120,16 @@ export default function SignInCustomer() {
                     label="Enter CNIC"
                     name="CNIC"
                     autoComplete="CNIC"
+                    autoFocus
+                />
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="FileNo"
+                    label="Enter File Number"
+                    name="FileNo"
+                    autoComplete="FileNo"
                     autoFocus
                 />
                 <Button

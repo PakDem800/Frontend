@@ -56,7 +56,10 @@ export default function BasicModal() {
   };
 
   return (
-    <div>
+    <Box 
+ 
+    >
+      
       <Button 
         
         sx={{
@@ -107,6 +110,6 @@ export default function BasicModal() {
         
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 }

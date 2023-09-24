@@ -53,7 +53,7 @@ function LedgerReport() {
             Ledger Report
         </Typography>
         </Box>
-        <DataTable data = { data }  nav = 'Agent/details' isPayment = {true} />
+        <DataTable data = { data }  nav = 'ReceiptDetails'  isPayment = {false} />
     </Box>
     )
 }
