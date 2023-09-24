@@ -38,12 +38,12 @@ export const loginUser = async (UserName, Password) => {
   }
 }
 
-export const LoginCustomer = async (CNICNo) => {
+export const LoginCustomer = async (CNICNo = null , FileNo = null) => {
 
 
 
   try {
-    const response = await Axios.post('/Customer/login', { CNICNo });
+    const response = await Axios.post('/Customer/login', { CNICNo , FileNo });
 
     localStorage.setItem("CNICNo" , CNICNo)
 

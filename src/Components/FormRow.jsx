@@ -516,7 +516,7 @@ export function FormRow2() {
             </Button>
             <Button
                 sx={ButtonStyling}
-                onClick={() => navigate('Create/')}
+                onClick={() => navigate('/Create/User')}
 
             >
                 

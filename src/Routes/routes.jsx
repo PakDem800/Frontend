@@ -58,6 +58,8 @@ import CustomerHome from '../Screens/CustomerHome';
 import RefundDetails from '../Pages/RefundDetials';
 import PrintMainAppForm from '../Pages/Print/PrintMainForm';
 import PrintRecipt from '../Pages/Print/PrintRecipt';
+import FileFolder from '../Pages/FileFolder';
+import UploadImage from '../Pages/UploadImage';
 
 function Body() {
     const theme = useTheme();
@@ -103,6 +105,8 @@ function Body() {
                 <Route path='MainFormTracking' element={<MainFormTracking />}/>
                 <Route path='ReceiptTracking' element = { <ReceiptTracking />} />
                 <Route path='RegistryInteqal' element= {<RegistryInteqal />} />
+                <Route path='Folder' element={<FileFolder />} />
+                <Route path='UploadImage' element = {<UploadImage />} />
 
                 {/* Print  */}
                 <Route path='PrintMainForm' element={<PrintMainAppForm />} />

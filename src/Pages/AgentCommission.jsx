@@ -33,9 +33,6 @@ function AgentCommission() {
       alert('Please select a Agent before confirming.');
     }
   };
-
-
-
   return (
     <Box 
     sx={{

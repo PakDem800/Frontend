@@ -12,6 +12,7 @@ import CustomerReceipt from './Screens/Customer/CustomerReceipts'
 import AgentHome from './Screens/AgentHome'
 import AgentCommissionPage from './Screens/Agent/AgentCommissionP'
 import AgentFiles from './Screens/Agent/AgentFile'
+import Test from './test'
 
 function App() {
 
@@ -31,6 +32,8 @@ function App() {
         <Route path='AgentHome' element={<AgentHome />} />
         <Route path='AgentFiles' element={<AgentFiles />}/>
         <Route path='AgentCommissionPage' element={<AgentCommissionPage/>} />
+
+        
 
         <Route path="/*" element={ <Body /> } />
     </Routes>
