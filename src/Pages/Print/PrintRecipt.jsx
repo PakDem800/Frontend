@@ -102,71 +102,71 @@ function PrintRecipt() {
 
           <Box sx={{
             
-              width:'93%' , flexGrow:1 , border : 2 , 
+              width:'100%' , flexGrow:1 , border : 2 , 
               borderRadius:10,backgroundColor:theme.palette.primary.background,
-              borderColor : theme.palette.secondary.main , padding:'2%'
+              borderColor : theme.palette.secondary.main ,
               }} >
-            <Grid container spacing={2} sx={{padding:'2%'}} ref={componentRef}>
-            <Grid item lg={8} md={8} sm={8} xs={8}>
-                <Box sx ={{
-                        
-                        color:'#0E9494',
-                        }}>
-                    <Typography variant='h4'>
-                        M M B C
-                    </Typography>
-                    <Typography sx={{ml:'15%'}} variant='h6' >
-                        A Project by PAK DEM (SMC-Pvt) Ltd.
-                    </Typography>
-                    <Typography sx={{ml:'15%'}} variant='body1' >
-                        Office No 14, Second Floor, Majeed Plaza, Bank Road, Saddar, Rawalpindi
-                        Phone: 051-8315383 WhatsApp: 0312-9113369
-                    </Typography>
-                  
-                </Box>
-                <Box sx={{
-                        display:'flex' ,
-                      justifyContent:'end',
-                      color:'#0E9494',
-                      mt:'5%'
-                      }}>
-                    <Typography variant='h4'
-                        
-                        sx={{
-                            fontFamily:'inherit',
-                            paddingRight:'12%' 
-                            ,fontWeight:'800',
-                            fontSize:'36px' ,
-                            paddingTop:'3%'    
-                    }}
-                    >
-                        RECEIPT FORM
-                        
-                       
+            <Grid container  sx={{padding:'2%'}} ref={componentRef}>
 
-                    </Typography>
-                   
-                </Box>
-                <Divider
-                            sx={{ width:900,
-                                mt: 3,
-                                mb:3,
-                                backgroundColor: 'black',
-                            }}
-                        />
-            </Grid>
-            <Grid item lg={4} md={4} sm={4} xs={4}>
-                <img src={img} alt=""
-                        style={{height:160}}
-                />
-            </Grid>
+            
+            
+
+                <Grid item lg={12} md={12} sm={12} xs={12}>
+                <Box
+                        sx={{
+                        border : 5,
+                        borderColor : '#0E9494',
+                        paddingX:3,
+                        marginY : 1,
+                        paddingY:1,
+                        borderRadius:5,
+                        width:'93%'
+                        }}
+                    >
+                    <Box sx ={{
+                            
+                            color:'#0E9494',
+                            }}>
+                        <Typography sx={{ml:'17.5%'}}  variant='h4'>
+                            MIAN MUHAMMAD BAKHSH CITY
+                        </Typography>
+                        <Typography  variant='h5' sx={{ml:'12%' , color:'black'}}>
+                            A PROJECT BY PAKDEM DEVELOPERS (SMC-PVT) LTD.
+                        </Typography>
+                        <Typography variant='body1' sx={{ml:'12%' ,color:'black'}} >
+                            OFFICE NO 14,SECOND FLOOR,MAJEED PLAZA,BANK ROAD, SADDAR,RAWALPINDI
+                        </Typography >
+                        <Typography variant='body1' sx={{ml:'29%' ,color:'black'}}>
+                            PHONE: 051-8315383 WHATSAPP: 0312-9113369
+                        </Typography>
+                    
+                    </Box>
+
+                    </Box>
+                    
+                    
+                </Grid>
+            
+                <Grid  container 
+            sx={{
+              border : 5,
+              borderColor : '#0E9494',
+              paddingX:3,
+              marginY : 1,
+              paddingY:1,
+              borderRadius:5,
+              width:'100%'
+            }}
+          >
+
         
             <Grid item lg={6}>
                 <Box
                     sx={{display:'flex',
                         flexDirection:"row",
                         color:'black',
-                        ml:1
+                        ml:1,
+                        mt:'20%'
                     }}
                 >
                     <Typography
@@ -176,12 +176,26 @@ function PrintRecipt() {
                     <FileNumberBoxes fileNumber={data.Receipt_No} />
                 </Box>
               </Grid>
+              <Grid item lg={12} sx= {{ml:'10%'}}>
+               
+                        <Typography variant='h4'
+                            sx={{
+                                fontFamily:'inherit'
+                                ,fontWeight:'800',
+                                fontSize:'34px' , 
+                               color : '#0E9494',
+                        }}
+                        >
+                            RECEIPT FORM
+                        </Typography>
+                            </Grid>
               <Grid item lg={6} >
                 <Box
                     sx={{display:'flex',
                         flexDirection:"row",
                         color:'black',
-                        ml:1
+                        ml:6,
+                        mt:'16%'
                     }}
                 >
                     <Typography
@@ -190,41 +204,16 @@ function PrintRecipt() {
                     </Typography>
                     <Typography
                     variant='h6'
-                            sx={{ ml:2}}
+                            sx={{  paddingX: 2, color:'green'  , ml:2}}
+
                             >
                         {data.Receipt_Status?.toUpperCase()}
                     </Typography>
                     
                 </Box>
               </Grid>
-              <Grid item lg={6}>
-                <Box
-                    sx={{display:'flex',
-                        flexDirection:"row",
-                        color:'black',
-                        ml:1
-                    }}
-                >
-                    <Typography
-                    sx={{mt:0.5}}
-                    variant='body1'
-                    >DATE :
-                    </Typography>
-                    <Typography
-                    variant='body1'
-                            sx={{mt:0.5 , ml:2}}
-                            >
-                        {data.Date}
-                        <Divider
-                            sx={{ width:100,
-                                mt:data.Date? 0 : 3,
-                                backgroundColor: 'black',
-                            }}
-                        />
-                    </Typography>
-                </Box>
-              </Grid>
-              <Grid item lg={6}>
+             
+              <Grid item lg={6} md={6} sm={6} xs={6}>
                 <Box
                     sx={{display:'flex',
                         flexDirection:"row",
@@ -251,7 +240,34 @@ function PrintRecipt() {
                     </Typography>
                 </Box>
               </Grid>
-              <Grid item lg={12} md={12} sm={12} xs={12}>
+              <Grid item lg={6} md={6} sm={6} xs={6}>
+                <Box
+                    sx={{display:'flex',
+                        flexDirection:"row",
+                        color:'black',
+                        ml:1
+                    }}
+                >
+                    <Typography
+                    sx={{mt:0.5}}
+                    variant='body1'
+                    >DATE :
+                    </Typography>
+                    <Typography
+                    variant='body1'
+                            sx={{mt:0.5 , ml:2}}
+                            >
+                        {data.Date}
+                        <Divider
+                            sx={{ width:100,
+                                mt:data.Date? 0 : 3,
+                                backgroundColor: 'black',
+                            }}
+                        />
+                    </Typography>
+                </Box>
+              </Grid>
+              <Grid item lg={6} md={6} sm={6} xs={6}>
                 <Box
                     sx={{display:'flex',
                         flexDirection:"row",
@@ -270,7 +286,7 @@ function PrintRecipt() {
                             >
                         {data.Name?.toUpperCase()}
                         <Divider
-                            sx={{ width:500,
+                            sx={{ width:300,
                                 mt:data.Name? 0 : 3,
                                 backgroundColor: 'black',
                             }}
@@ -278,7 +294,7 @@ function PrintRecipt() {
                     </Typography>
                 </Box>
               </Grid>
-              <Grid item lg={12} md={12} sm={12} xs={12}>
+              <Grid item lg={6} md={6} sm={6} xs={6}>
                 <Box
                     sx={{display:'flex',
                         flexDirection:"row",
@@ -297,7 +313,7 @@ function PrintRecipt() {
                             >
                         {data.Received_Amount}
                         <Divider
-                            sx={{ width:300,
+                            sx={{ width:200,
                                 mt:data.Received_Amount? 0 : 3,
                                 backgroundColor: 'black',
                             }}
@@ -305,7 +321,7 @@ function PrintRecipt() {
                     </Typography>
                 </Box>
               </Grid>
-              <Grid item lg={12}>
+              <Grid item lg={6} md={6} sm={6} xs={6}>
                 <Box
                     sx={{display:'flex',
                         flexDirection:"row",
@@ -324,7 +340,7 @@ function PrintRecipt() {
                             >
                         {data.Total_Recieved}
                         <Divider
-                            sx={{ width:300,
+                            sx={{ width:100,
                                 mt:data.Total_Recieved? 0 : 3,
                                 backgroundColor: 'black',
                             }}
@@ -332,35 +348,7 @@ function PrintRecipt() {
                     </Typography>
                 </Box>
               </Grid>
-              <Grid item lg={12}>
-                <Box
-                    sx={{display:'flex',
-                        flexDirection:"row",
-                        color:'black',
-                        ml:1
-                    }}
-                >
-                    <Typography
-                    sx={{mt:0.5}}
-                    variant='body1'
-                    >AMOUNT FOR THE MONTH:
-                    </Typography>
-                    <Typography
-                    variant='body1'
-                            sx={{mt:0.5 , ml:2}}
-                            >
-                        {data.Amount_For_The_Month_Of}
-                        <Divider
-                            sx={{ width:200,
-                                mt:data.Amount_For_The_Month_Of? 0 : 3,
-                                backgroundColor: 'black',
-                            }}
-                        />
-                    </Typography>
-                </Box>
-              </Grid>
-
-              <Grid item lg={5}>
+              <Grid item lg={6} md={6} sm={6} xs={6}>
                 <Box
                     sx={{display:'flex',
                         flexDirection:"row",
@@ -387,7 +375,7 @@ function PrintRecipt() {
                     </Typography>
                 </Box>
               </Grid>
-              <Grid item lg={7}>
+              <Grid item lg={6} md={6} sm={6} xs={6}>
                 <Box
                     sx={{display:'flex',
                         flexDirection:"row",
@@ -398,7 +386,34 @@ function PrintRecipt() {
                     <Typography
                     sx={{mt:0.5}}
                     variant='body1'
-                    >MODE OF PAYMENT:
+                    >AMOUNT FOR THE MONTH:
+                    </Typography>
+                    <Typography
+                    variant='body1'
+                            sx={{mt:0.5 , ml:2}}
+                            >
+                        {data.Amount_For_The_Month_Of}
+                        <Divider
+                            sx={{ width:100,
+                                mt:data.Amount_For_The_Month_Of? 0 : 3,
+                                backgroundColor: 'black',
+                            }}
+                        />
+                    </Typography>
+                </Box>
+              </Grid>
+              <Grid item lg={6} md={6} sm={6} xs={6}>
+                <Box
+                    sx={{display:'flex',
+                        flexDirection:"row",
+                        color:'black',
+                        ml:1
+                    }}
+                >
+                    <Typography
+                    sx={{mt:0.5}}
+                    variant='body1'
+                    >PAYMENT TYPE:
                     </Typography>
                     <Typography
                     variant='body1'
@@ -406,7 +421,7 @@ function PrintRecipt() {
                             >
                         {data.Payment_Mode}
                         <Divider
-                            sx={{ width:200,
+                            sx={{ width:100,
                                 mt:data.Payment_Mode? 0 : 3,
                                 backgroundColor: 'black',
                             }}
@@ -414,7 +429,10 @@ function PrintRecipt() {
                     </Typography>
                 </Box>
               </Grid>
-              <Grid item lg={4}>
+
+            
+       
+              <Grid item lg={3} md={3} sm={3} xs={3}>
             <Box
                 sx={{display:'flex',
                      flexDirection:"row",
@@ -425,40 +443,19 @@ function PrintRecipt() {
                 <Typography
                 sx={{mt:0.5}}
                 variant='body1'
-                 >PLOT SIZE :
+                 >AREA :
                  </Typography>
                  <Typography
                  variant='body1'
-                        sx={{mt:0.5 , ml:2 , border:1 , paddingX:'2%' }}
+                        sx={{mt:0.5 , ml:2 , border:1 , paddingX:'1%' }}
                         >
                     {data.Area?.toUpperCase()}
  
                  </Typography>
             </Box>
           </Grid>
-          <Grid item lg={4} >
-            <Box
-                sx={{display:'flex',
-                     flexDirection:"row",
-                    color:'black',
-                    ml:1
-                }}
-            >
-                <Typography
-                sx={{mt:0.5}}
-                variant='body1'
-                 >PLOT LOCATION :
-                 </Typography>
-                 <Typography
-                 variant='body1'
-                        sx={{mt:0.5 , ml:2 , border:1 , paddingX:'2%' }}
-                        >
-                    {data.PlotLocation?.toUpperCase()}
- 
-                 </Typography>
-            </Box>
-          </Grid>
-          <Grid item lg={4}>
+
+          <Grid item lg={3} md={3} sm={3} xs={3}>
             <Box
                 sx={{display:'flex',
                      flexDirection:"row",
@@ -474,7 +471,7 @@ function PrintRecipt() {
                  <Typography
                  variant='body1'
                         sx={{mt:0.5 , ml:2 , border:1 , 
-                            paddingX:'5%' }}
+                            paddingX:'3%' }}
                         >
                     {data.Phase?.toUpperCase()}
  
@@ -482,7 +479,7 @@ function PrintRecipt() {
             </Box>
           </Grid>
         
-          <Grid item lg={4} >
+          <Grid item lg={3} md={3} sm={3} xs={3} >
             <Box
                 sx={{display:'flex',
                      flexDirection:"row",
@@ -497,20 +494,18 @@ function PrintRecipt() {
                  </Typography>
                  <Typography
                  variant='body1'
-                        sx={{mt:0.5 , ml:2 , border:1 , paddingX:'5%' }}
+                        sx={{mt:0.5 , ml:2 , border:1 , paddingX:'3%' }}
                         >
                     {data.Block?.toUpperCase()}
  
                  </Typography>
             </Box>
           </Grid>
-
-           <Grid item lg={6}>
+           <Grid item lg={3} md={3} sm={3} xs={3}>
             <Box
                 sx={{display:'flex',
                      flexDirection:"row",
                     color:'black',
-                    ml:1
                 }}  
             >
                 <Typography
@@ -521,7 +516,7 @@ function PrintRecipt() {
                  <Typography
                  variant='body1'
                         sx={{mt:0.5 , ml:2 , border:1 , 
-                            paddingX:'5%' }}
+                            paddingX:'3%' }}
                         >
                     {data.Plot?.toUpperCase()}
  
@@ -556,7 +551,7 @@ function PrintRecipt() {
             </Box>
           </Grid>
 
-          <Grid item lg={5}>
+          <Grid item lg={6} md={6} sm={6} xs={6}>
                 <Box
                     sx={{display:'flex',
                         flexDirection:"row",
@@ -583,7 +578,7 @@ function PrintRecipt() {
                     </Typography>
                 </Box>
               </Grid>
-              <Grid item lg={7}>
+              <Grid item lg={6} md={6} sm={6} xs={6}>
                 <Box
                     sx={{display:'flex',
                         flexDirection:"row",
@@ -610,67 +605,15 @@ function PrintRecipt() {
                     </Typography>
                 </Box>
               </Grid>
-
-              <Grid item lg={5}>
-                <Box
-                    sx={{display:'flex',
-                        flexDirection:"row",
-                        color:'black',
-                        ml:1
-                    }}
-                >
-                    <Typography
-                    sx={{mt:0.5}}
-                    variant='body1'
-                    >PREPARED BY:
-                    </Typography>
-                    <Typography
-                    variant='body1'
-                            sx={{mt:0.5 , ml:2}}
-                            >
-                        {data.Prepaired_by_Name?.toUpperCase()}
-                        <Divider
-                            sx={{ width:100,
-                                mt:data.Prepaired_by_Name? 0 : 3,
-                                backgroundColor: 'black',
-                            }}
-                        />
-                    </Typography>
-                </Box>
-              </Grid>
-              <Grid item lg={7}>
-                <Box
-                    sx={{display:'flex',
-                        flexDirection:"row",
-                        color:'black',
-                        ml:1
-                    }}
-                >
-                    <Typography
-                    sx={{mt:0.5}}
-                    variant='body1'
-                    >SIGNATURE:
-                    </Typography>
-                    <Typography
-                    variant='body1'
-                            sx={{ ml:2}}
-                            >
-                        <Divider
-                            sx={{ width:200,
-                                mt: 3,
-                                backgroundColor: 'black',
-                            }}
-                        />
-                    </Typography>
-                </Box>
               </Grid>
               <Grid>
+
+               
               <Box
                     sx={{display:'flex',
                         flexDirection:"row",
                         color:'black',
                         ml:1,
-                        mt:2
                     }}
                 >
 
@@ -679,9 +622,7 @@ function PrintRecipt() {
                             sx={{ ml:2}}
                             >
                               <Divider
-                            sx={{ width:900,
-                                mt: 3,
-                                mb:2,
+                            sx={{ width:870,
                                 backgroundColor: 'black',
                             }}
                         />

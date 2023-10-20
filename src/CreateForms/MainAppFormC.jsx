@@ -381,39 +381,7 @@ function CreateMainAppForm() {
               </DemoContainer>
             </LocalizationProvider>
         </Grid>
-        <Grid item lg={4} md={4} sm={12} xs={12}
-            sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' , width:{sm:'70%'} }}
-        >
-            <AgentSelectorID
-              
-              onConfirm={(selectedAgentID) => {
-                setFieldValue("Agent", selectedAgentID);
-              }}
-            />
-        </Grid>
-
-        <Grid item lg={4} md={4} sm={12} xs={12}
-            sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-          >
-          <SubAgentSelectorID
-                onConfirm={(selectedAgentID) => {
-                  setFieldValue("SubAgent", selectedAgentID);
-                }}
-              />
-        </Grid>
-
-        <Grid item lg={4} md={4} sm={12} xs={12}
-            sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-        >
-            <InvestorSelector
-              
-              onConfirm={(selectedAgentID) => {
-                setFieldValue("Investor", selectedAgentID);
-              }}
-            />
-        </Grid>
-  
-          <Grid item lg={3} md={3} sm={6} xs={12}>
+        <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
                 label="File No *"
@@ -426,117 +394,6 @@ function CreateMainAppForm() {
                 <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.FileNo}</p>
               ) : null}
           </Grid>
-          <Grid item lg={3} md={3} sm={6} xs={12}>
-            <TextField sx={{ width: '100%' }}
-              id="outlined-multiline-flexible"
-              label="Applicant Name *"
-              color='secondary'
-              name='ApplicantName'
-              value={values.ApplicantName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-
-            />{errors.ApplicantName && touched.ApplicantName ? (
-              <p style={{ color: 'red', marginLeft: 4, marginBottom: 0, marginTop: 0 }}>{errors.ApplicantName}</p>
-            ) : null}
- 
-            </Grid>
-            <Grid item lg={3} md={3} sm={6} xs={12}>
-            <TextField sx={{ width: '100%' }}
-              id="outlined-multiline-flexible"
-              label="Total Installments *"
-              color='secondary'
-              name='Total_Installment'
-              value={values.Total_Installment}
-              onChange={handleChange}
-              onBlur={handleBlur}
-
-            />{errors.Total_Installment && touched.Total_Installment ? (
-              <p style={{ color: 'red', marginLeft: 4, marginBottom: 0, marginTop: 0 }}>{errors.Total_Installment}</p>
-            ) : null}
- 
-            </Grid>
-            <Grid item lg={3} md={3} sm={6} xs={12}>
-            <TextField sx={{ width: '100%' }}
-              id="outlined-multiline-flexible"
-              label="Father Or Husband *"
-              color='secondary'
-              multiline
-              name='FatherOrHusband'
-              value={values.FatherOrHusband}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />{errors.FatherOrHusband && touched.FatherOrHusband ? (
-              <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.FatherOrHusband}</p>
-            ) : null}
-            </Grid>
-            <Grid item lg={3} md={3} sm={6} xs={12}>
-            <TextField sx={{ width: '100%' }}
-              id="outlined-multiline-flexible"
-              label="Permanent Address *"
-              color='secondary'
-              multiline
-              name='PermanentAddress'
-              value={values.PermanentAddress}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />{errors.PermanentAddress && touched.PermanentAddress ? (
-              <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.PermanentAddress}</p>
-            ) : null}
-            </Grid>
-            <Grid item lg={3} md={3} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Nok *"
-                color='secondary'
-                name='Nok'
-                value={values.Nok}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />{errors.Nok && touched.Nok ? (
-                <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.Nok}</p>
-              ) : null}
-          </Grid>
-          <Grid item lg={3} md={3} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Total Amount *"
-                color='secondary'
-                name='TotalAmount'
-                value={values.TotalAmount}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />{errors.TotalAmount && touched.TotalAmount ? (
-                <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.TotalAmount}</p>
-              ) : null}
-          </Grid>
-          <Grid item lg={3} md={3} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Down Payment *"
-                color='secondary'
-                name='DownPayment'
-                value={values.DownPayment}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />{errors.DownPayment && touched.DownPayment ? (
-                <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.DownPayment}</p>
-              ) : null}
-          </Grid>
-
-          <Grid item lg={3} md={3} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Down Payment Commission"
-                type='number'    
-                color='secondary'
-                name='GrandTotal'
-                value={values.GrandTotal}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-          </Grid>
-
           <Grid item lg={3} md = {3} sm = {6} xs={12}>
           <FormControl sx={{width: '100%' }}>
               <InputLabel >File Type</InputLabel>
@@ -557,18 +414,39 @@ function CreateMainAppForm() {
           </Grid>
 
           <Grid item lg={3} md={3} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Phone No"
-                color='secondary'
-                name='ContactNo'
-                value={values.ContactNo}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-          </Grid>
+            <TextField sx={{ width: '100%' }}
+              id="outlined-multiline-flexible"
+              label="Applicant Name *"
+              color='secondary'
+              name='ApplicantName'
+              value={values.ApplicantName}
+              onChange={handleChange}
+              onBlur={handleBlur}
 
-          <Grid item lg={3} md={3} sm={6} xs={12}>
+            />{errors.ApplicantName && touched.ApplicantName ? (
+              <p style={{ color: 'red', marginLeft: 4, marginBottom: 0, marginTop: 0 }}>{errors.ApplicantName}</p>
+            ) : null}
+ 
+            </Grid>
+
+            
+
+            <Grid item lg={3} md={3} sm={6} xs={12}>
+            <TextField sx={{ width: '100%' }}
+              id="outlined-multiline-flexible"
+              label="Father Or Husband *"
+              color='secondary'
+              multiline
+              name='FatherOrHusband'
+              value={values.FatherOrHusband}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />{errors.FatherOrHusband && touched.FatherOrHusband ? (
+              <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.FatherOrHusband}</p>
+            ) : null}
+            </Grid>
+
+            <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
                 label="CNIC No"
@@ -580,13 +458,39 @@ function CreateMainAppForm() {
               />
           </Grid>
 
+
           <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
-                label="Plot No"
+                label="Phone No"
                 color='secondary'
-                name='PlotNo'
-                value={values.PlotNo}
+                name='ContactNo'
+                value={values.ContactNo}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+          </Grid>
+          <Grid item lg={3} md={3} sm={6} xs={12}>
+              <TextField sx={{  width: '100%' }}
+                id="outlined-multiline-flexible"
+                label="Nok *"
+                color='secondary'
+                name='Nok'
+                value={values.Nok}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />{errors.Nok && touched.Nok ? (
+                <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.Nok}</p>
+              ) : null}
+          </Grid>
+
+          <Grid item lg={3} md={3} sm={6} xs={12}>
+              <TextField sx={{  width: '100%' }}
+                id="outlined-multiline-flexible"
+                label="Relation to Nok"
+                color='secondary'
+                name='NokSRelation'
+                value={values.NokSRelation}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -595,15 +499,53 @@ function CreateMainAppForm() {
           <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
-                label="Plot Size"
+                label="Postal Address"
                 color='secondary'
-                name='Area'
-                value={values.Area}
+                name='PostalAddress'
+                value={values.PostalAddress}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+          </Grid>
+          <Grid item lg={3} md={3} sm={6} xs={12}>
+            <TextField sx={{ width: '100%' }}
+              id="outlined-multiline-flexible"
+              label="Permanent Address *"
+              color='secondary'
+              multiline
+              name='PermanentAddress'
+              value={values.PermanentAddress}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />{errors.PermanentAddress && touched.PermanentAddress ? (
+              <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.PermanentAddress}</p>
+            ) : null}
+            </Grid>
+          
+
+          <Grid item lg={3} md={3} sm={6} xs={12}>
+              <TextField sx={{  width: '100%' }}
+                id="outlined-multiline-flexible"
+                label="Phase"
+                color='secondary'
+                name='Phase'
+                value={values.Phase}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
           </Grid>
 
+          <Grid item lg={3} md={3} sm={6} xs={12}>
+              <TextField sx={{  width: '100%' }}
+                id="outlined-multiline-flexible"
+                label="Block"
+                color='secondary'
+                name='Block'
+                value={values.Block}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+          </Grid>
           <Grid item lg={3} md = {3} sm = {6} xs={12}>
           <FormControl sx={{width: '100%' }}>
               <InputLabel >Plot Location</InputLabel>
@@ -646,81 +588,34 @@ function CreateMainAppForm() {
 
           </Grid>
 
+
           <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
-                label="Phase"
+                label="Plot Size"
                 color='secondary'
-                name='Phase'
-                value={values.Phase}
+                name='Area'
+                value={values.Area}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
           </Grid>
 
-          <Grid item lg={3} md={3} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Block"
-                color='secondary'
-                name='Block'
-                value={values.Block}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-          </Grid>
-
-          <Grid item lg={3} md={3} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Relation to Nok"
-                color='secondary'
-                name='NokSRelation'
-                value={values.NokSRelation}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-          </Grid>
-
-          <Grid item lg={3} md={3} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Postal Address"
-                color='secondary'
-                name='PostalAddress'
-                value={values.PostalAddress}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-          </Grid>
-
-          <Grid item lg={3} md={3} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Monthly Installment"
-                color='secondary'
-                type='number'
-                name='MonthlyInstallment'
-                value={values.MonthlyInstallment}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-          </Grid>
-
-          <Grid item lg={3} md={3} sm={6} xs={12}>
-              <TextField sx={{  width: '100%' }}
-                id="outlined-multiline-flexible"
-                label="Commission Percentage"
-                type='number'    
-                color='secondary'
-                name='CommissionPercentage'
-                value={values.CommissionPercentage}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-          </Grid>
 
           
+
+          <Grid item lg={3} md={3} sm={6} xs={12}>
+              <TextField sx={{  width: '100%' }}
+                id="outlined-multiline-flexible"
+                label="Plot No"
+                color='secondary'
+                name='PlotNo'
+                value={values.PlotNo}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+          </Grid>
+
 
           <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
@@ -733,14 +628,59 @@ function CreateMainAppForm() {
                 onBlur={handleBlur}
               />
           </Grid>
+          <Grid item lg={3} md={3} sm={6} xs={12}>
+              <TextField sx={{  width: '100%' }}
+                id="outlined-multiline-flexible"
+                label="Total Amount *"
+                color='secondary'
+                name='TotalAmount'
+                value={values.TotalAmount}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />{errors.TotalAmount && touched.TotalAmount ? (
+                <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.TotalAmount}</p>
+              ) : null}
+          </Grid>
+
 
           <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
-                label="Discount"
+                label="Down Payment *"
                 color='secondary'
-                name='Discount'
-                value={values.Discount}
+                name='DownPayment'
+                value={values.DownPayment}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />{errors.DownPayment && touched.DownPayment ? (
+                <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.DownPayment}</p>
+              ) : null}
+          </Grid>
+          <Grid item lg={3} md={3} sm={6} xs={12}>
+            <TextField sx={{ width: '100%' }}
+              id="outlined-multiline-flexible"
+              label="Total Installments *"
+              color='secondary'
+              name='Total_Installment'
+              value={values.Total_Installment}
+              onChange={handleChange}
+              onBlur={handleBlur}
+
+            />{errors.Total_Installment && touched.Total_Installment ? (
+              <p style={{ color: 'red', marginLeft: 4, marginBottom: 0, marginTop: 0 }}>{errors.Total_Installment}</p>
+            ) : null}
+ 
+            </Grid>
+
+
+            <Grid item lg={3} md={3} sm={6} xs={12}>
+              <TextField sx={{  width: '100%' }}
+                id="outlined-multiline-flexible"
+                label="Monthly Installment"
+                color='secondary'
+                type='number'
+                name='MonthlyInstallment'
+                value={values.MonthlyInstallment}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -765,13 +705,48 @@ function CreateMainAppForm() {
           </FormControl>
           </Grid>
 
+          <Grid item lg={3} md={4} sm={12} xs={12}
+            sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' , width:{sm:'70%'} }}
+        >
+            <AgentSelectorID
+              
+              onConfirm={(selectedAgentID) => {
+                setFieldValue("Agent", selectedAgentID);
+              }}
+            />
+        </Grid>
+
+        <Grid item lg={3} md={4} sm={12} xs={12}
+            sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          >
+          <SubAgentSelectorID
+                onConfirm={(selectedAgentID) => {
+                  setFieldValue("SubAgent", selectedAgentID);
+                }}
+              />
+        </Grid>
+
+
+        <Grid item lg={3} md={3} sm={6} xs={12}>
+              <TextField sx={{  width: '100%' }}
+                id="outlined-multiline-flexible"
+                label="Down Payment Commission"
+                type='number'    
+                color='secondary'
+                name='GrandTotal'
+                value={values.GrandTotal}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+          </Grid>
           <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
-                label="Investor Amount"
+                label="Down Payment Commission"
+                type='number'    
                 color='secondary'
-                name='InvestorAmount'
-                value={values.InvestorAmount}
+                name='GrandTotal'
+                value={values.GrandTotal}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -780,10 +755,10 @@ function CreateMainAppForm() {
           <Grid item lg={3} md={3} sm={6} xs={12}>
               <TextField sx={{  width: '100%' }}
                 id="outlined-multiline-flexible"
-                label="Investor Down Payment"
+                label="Discount"
                 color='secondary'
-                name='InvestorDownPayment'
-                value={values.InvestorDownPayment}
+                name='Discount'
+                value={values.Discount}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -800,6 +775,8 @@ function CreateMainAppForm() {
                 onBlur={handleBlur}
               />
           </Grid>
+
+
           {!data && <> <Grid item lg={12} md={12} sm={12} xs={12}>
             <Typography variant="h6" sx = {{marginTop:'1%'}}>
               Development Charges
