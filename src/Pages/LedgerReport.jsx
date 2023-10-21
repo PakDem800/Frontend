@@ -4,6 +4,7 @@ import { useTheme } from '@emotion/react';
 import { useNavigate } from "react-router-dom";
 import DataTable from "../Components/Table";
 import { getLedgerReport } from "../api/LedgerReport";
+import LedgerTable from "../Components/LedgerTable";
 
 
 function LedgerReport() {
@@ -13,18 +14,16 @@ function LedgerReport() {
     const theme = useTheme();
 
   const [data, setData] = useState(null);
-
+  const fetchData = async () => {
+    try {
+      
+      const responseData = await getLedgerReport(); 
+      setData(responseData); 
+    } catch (error) {
+      // Handle error if needed
+    }
+  };
   useEffect(() => {
-  
-    const fetchData = async () => {
-      try {
-        
-        const responseData = await getLedgerReport(); 
-        setData(responseData); 
-      } catch (error) {
-        // Handle error if needed
-      }
-    };
 
     fetchData(); 
   }, []);
@@ -53,7 +52,7 @@ function LedgerReport() {
             Ledger Report
         </Typography>
         </Box>
-        <DataTable data = { data }  nav = 'ReceiptDetails'  isPayment = {false} />
+        <LedgerTable data = { data }  nav = 'MainAppFormDetails'  isPayment = {false} />
     </Box>
     )
 }

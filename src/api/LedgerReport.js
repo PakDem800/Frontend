@@ -3,7 +3,7 @@ import Axios from "./connection";
 export const getLedgerReport = async () => {
     try {
       const response = await Axios.get('/LedgerReport');
-      return response.data; // Return the response data
+      return response.data; 
     } catch (error) {
      
     

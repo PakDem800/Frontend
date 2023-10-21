@@ -121,7 +121,7 @@ function PaymentSchedule() {
         </Grid>
         <Grid item lg={3} md={3} sm={12} xs={12}
         >
-            <TextField sx={{  width: {lg : '100%' , md : "85%" , 
+            <TextField sx={{ mt:1,  width: {lg : '100%' , md : "85%" , 
                                         sm : "70%" , xs : "60%"} }}
                 id="outlined-multiline-flexible"
                 label="File No*"

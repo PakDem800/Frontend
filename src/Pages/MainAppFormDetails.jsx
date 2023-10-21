@@ -17,7 +17,10 @@ function MainAppFormDetails () {
     
     const location = useLocation();
 
+     const legderData = useLocation().state?.ledger
+
     const id = location.pathname?.split('/').pop();
+
     const applicationData = useLocation.state?.applicationData
     const [data , setData] = useState(null);
 
@@ -128,6 +131,28 @@ function MainAppFormDetails () {
             
           </Box>
           <GetCard data={data} nav='Main' isExp={false} />
+          {
+            legderData && 
+            (
+              <Box sx = {{ 
+              display:'flex',flexDirection:'row',justifyContent:'center',
+              }}>
+                  <Box sx = {{ width:'80%', border : 3,
+                    display:'flex',flexDirection:'row',justifyContent:'space-evenly',
+                    padding:'2%',marginBottom:'3%',borderRadius:3}}>
+                        <Typography variant='h6' > 
+                          Total Amount : {legderData.total_amount}
+                        </Typography>
+                        <Typography variant='h6' > 
+                          Received Amount : {legderData.received_amount}
+                        </Typography>
+                        <Typography variant='h6' > 
+                          Balance Amount : {legderData.balance_amount}
+                        </Typography>
+                  </Box>
+              </Box>
+            )
+          }
         </Box>
       );
             }
