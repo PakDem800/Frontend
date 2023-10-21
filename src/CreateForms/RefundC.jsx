@@ -1,7 +1,8 @@
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { Box } from "@mui/material";
-import {Button} from '@mui/material';
+import {Button} from '@mui/material'
+import TextField from '@mui/material/TextField';
 import { useTheme } from '@emotion/react';
 import { useNavigate , useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
@@ -9,6 +10,8 @@ import { getrefundFile } from '../api/Transfer';
 import TransferCard from '../Components/TransferCard';
 import FileSelector from '../Components/fileselector';
 import RefundForm from './refundForm';
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 function CreateRefund () {
 
@@ -19,7 +22,24 @@ function CreateRefund () {
     const [data , setData] = useState(null);
 
     const [selectedFile, setSelectedFile] = useState('');
-
+    const initialValues =   {
+      FileNo: null
+    } 
+  
+    const { values, handleBlur, handleChange, handleSubmit, errors, touched, setFieldValue } =
+      useFormik({
+        initialValues,
+        validationSchema: Yup.object({
+          FileNo: Yup.number().required("File No is required!"),
+          
+        }),
+        validateOnChange: true,
+        validateOnBlur: false,
+        onSubmit: (values, action) => {
+          console.log(values);
+           
+        },
+      });
     const getdetails = async (file) => {
         try {
             
@@ -49,7 +69,22 @@ function CreateRefund () {
 
     const handleConfirm = (file) => {
         setSelectedFile(file);
-        getdetails(file);
+    };
+
+    const handleConfirmButtonClick = async () => {
+      if (selectedFile || values.FileNo) {
+        if (selectedFile) {
+          getdetails(selectedFile)
+        } else if (values.FileNo) {
+          if (isNaN(values.FileNo)) {
+            alert('File should be a number');
+          } else {
+            getdetails(values.FileNo)
+          }
+        }
+      } else {
+        alert('Please select or type a file before confirming.');
+      }
     };
 
     return (
@@ -67,13 +102,56 @@ function CreateRefund () {
           <Box
             sx={{
               display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
               padding:'1%'
             }}
           >
             <FileSelector onConfirm={handleConfirm} />
-            
+            <Typography variant="h6" sx={{
+                    mt:2,
+                    mb: {lg :0 , xs:2}
+                    }}>
+                -- Or Type -- 
+            </Typography>
+            <TextField sx={{ mt:1,  width: {lg : '30%' , md : "30%" , 
+                                        sm : "30%" , xs : "30%"} }}
+                id="outlined-multiline-flexible"
+                label="File No*"
+                color='secondary'
+                name='FileNo'
+                value={values.FileNo}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />{!selectedFile && errors.FileNo && touched.FileNo ? (
+                <p style={{ color: 'red', marginTop: 0, marginLeft: 4, marginBottom: 0 }}>{errors.FileNo}</p>
+              ) : null}
+
+        
+
+          </Box>
+          <Box>
+          <Button
+                sx = {{
+                    color: theme.palette.secondary.text,
+                    backgroundColor: theme.palette.secondary.main,
+                    fontWeight: 'bold',
+                    boxShadow: 10,
+                    my: 1,
+                    ':hover': {
+                        backgroundColor: theme.palette.secondary.hoverButton,
+                        color: theme.palette.secondary.main,
+                    },
+                    border: 1,
+                    borderRadius: 2,
+                    paddingLeft: 1,
+                    paddingRight: 1,
+                    paddingTop: 1,
+                    paddingBottom: 1,
+                    borderColor: theme.palette.secondary.Button,
+                }}
+            onClick={handleConfirmButtonClick}>Get File Record
+            </Button>
           </Box>
           {
             data &&

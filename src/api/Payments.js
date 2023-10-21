@@ -87,7 +87,7 @@ export const getCashPayment = async (startDate = null) => {
       return response.data; // Return the response data
     } catch (error) {
      
-    
+    console.log(error)
       if (error.response && error.response.status === 401) {
         if (error.response.data.message === 'Not Authorized No Token.') {
           const errorMessage = error.response.data.message + ' Please Login First';
@@ -100,8 +100,10 @@ export const getCashPayment = async (startDate = null) => {
         } else {
           alert(error.response.data.message);
         }
+      }else if(error.response && error.response.status === 404){
+        alert(error.response.data.message)
       } else {
-        alert("An error occurred. Please try again later.");
+        alert("Error Occured");
       }
       
       return null; // Return null in case of an error
@@ -127,7 +129,9 @@ export const getCashPayment = async (startDate = null) => {
         } else {
           alert(error.response.data.message);
         }
-      } else {
+      } 
+      
+      else {
         alert("An error occurred. Please try again later.");
       }
       

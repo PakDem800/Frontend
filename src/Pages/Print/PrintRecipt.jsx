@@ -204,7 +204,7 @@ function PrintRecipt() {
                     </Typography>
                     <Typography
                     variant='h6'
-                            sx={{  paddingX: 2, color:'green'  , ml:2}}
+                            sx={{  paddingX: 2, color: data.Receipt_Status == 'UnPaid' ? 'blue' : 'green'  , ml:2}}
 
                             >
                         {data.Receipt_Status?.toUpperCase()}

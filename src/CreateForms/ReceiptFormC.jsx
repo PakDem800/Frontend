@@ -41,7 +41,8 @@ function CreateReceipt() {
         setSelectedFile(file);
     };
 
-
+   
+  
   
 
 
@@ -77,6 +78,7 @@ function CreateReceipt() {
     
   }
 
+
   const { values, handleBlur, handleChange, handleSubmit, errors, touched, setFieldValue } =
     useFormik({
       initialValues,
@@ -96,7 +98,10 @@ function CreateReceipt() {
     });
 
  
-
+    const labelStyle = {
+      color: values.ReceiptStatus === 'Paid' ? 'green' : values.ReceiptStatus === 'UnPaid' ? 'blue' : 'black',
+    };
+  
 
   const handleClick = async () => {
     
@@ -424,7 +429,7 @@ function CreateReceipt() {
           </Grid>
 
           <Grid item lg={3} md = {3} sm = {6} xs={12}>
-          <FormControl sx={{width: '100%' }}>
+          <FormControl sx={{width:'100%'}}>
               <InputLabel >Receipt Status</InputLabel>
               <Select
                 id="outlined-multiline-flexible"
@@ -432,8 +437,10 @@ function CreateReceipt() {
                 color='secondary'
                 name='ReceiptStatus'
                 value={values.ReceiptStatus}
+                style={labelStyle}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                
               >
                 <MenuItem value={"Paid"}>Paid</MenuItem>
                 <MenuItem value={"UnPaid"}>Un Paid</MenuItem>

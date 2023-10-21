@@ -19,10 +19,6 @@ function CustomerFormDetails () {
     const [data , setData] = useState(null);
     const [islogged , setislogged] = useState(null)
 
-
-
-    
-
     useEffect(() => {
         const fetchData = async (CNICNo) => {
           try {
