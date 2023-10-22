@@ -159,7 +159,10 @@ export default function DrawerAppBar() {
                    sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row',
                     textAlign: 'center', alignItems: 'center' }} >
               <span style={{ color: theme.palette.secondary.text, fontWeight: 'bolder', fontStyle: 'oblique' }}>PAK
-                <span style={{ color: theme.palette.secondary.text }}>DEM</span></span>
+                <span style={{ color: theme.palette.secondary.text }}>DEM</span>
+                <span style={{ color: theme.palette.secondary.text , marginLeft:5}}>DEVELOPERS</span>
+                <span style={{ color: theme.palette.secondary.text , marginLeft:5}}>PORTAL</span></span>
+
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               <Button onClick={() => { navigate('/Home'); }} sx={{ color: theme.palette.secondary.text, fontWeight: 'bold', marginRight: 4, ':hover': { borderBottom: '4px solid #ffffff' } }}>
